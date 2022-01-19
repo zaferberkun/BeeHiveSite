@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- meta -->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta http-equiv="Content-Type">
+  <meta lang="en">
+  <meta charset="UTF-8">
+  <meta content="text/html">
+  <meta name="description"
+    content="Our focus at BeeHive is on the physical infrastructure, technology, education and coordination that will enable urban communities to fully benefit from the future of urban air mobility (a future that is arriving very rapidly).">
+  <link rel="canonical" href="https://cap20.org/" />
+  <title>Beehive Technologies</title>
+  <link rel="apple-touch-icon" sizes="120x120" href="./favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+  <link rel="manifest" href="./favicon/site.webmanifest">
+  <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#7d95df">
+  <!-- <link rel='stylesheet' type="text/css" href='hub.css'> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=block" rel="stylesheet">
+  <style>
+    :root {
+      font-size: 14px;
+      font-family: "ludo", "Avenir Next", "Helvetica Neue", sans-serif, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+      font-weight: 300;
+      line-height: 1.25;
+      --lower_drone_key_height: 200px;
+      --raise_drone_key_height: 500px;
+      --lower_tether_key_height: 700px;
+      --raise_tether_key_height: 500px;
+      --horz_scroll_key_height: 500vw;
+      --raise_tether_key_height: 800px;
+      --date_magnifier_width: 150px;
+    }
+
+    .background {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      background-image: url("./187 Washington Chicago Steet.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .fixed-vert-flex {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      --tether_length: 20px;
+      --tether_length_start: 20px;
+      --drone_pos_y: 0px;
+      --drone_pos_y_start: 0px;
+      --frame_y_pos: 100vh;
+      --frame_y_pos_start: 1000px;
+      --frame_height: 300px;
+      --frame_width: 900px;
+      --frame_horz_scroller_width: 500vw;
+      --transition_time: 0.5s;
+      --frame_x_scroll_pos: 0px;
+      animation: 1s ease-in-out 0s infinite alternate both running drone-lower;
+    }
+
+    .drone-tether-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* background-color: rgb(237, 100, 100); */
+      width: 100%;
+      --drone_height: 100px;
+      --x_trans: 0px;
+      margin-top: var(--drone_pos_y);
+      z-index: 100;
+      transform: translateX(var(--x_trans));
+      transition: margin 2s cubic-bezier(0.68, -0.1, 0.32, 1.3), transform 1.5s ease-out;
+    }
+
+    @keyframes drone-lower {
+      0% {
+        transform: translateY(-4px);
+      }
+
+      100% {
+        transform: translateY(5px);
+      }
+    }
+
+    .drone {
+      width: 400px;
+      height: var(--drone_height);
+      /* background-color: blueviolet; */
+      margin-top: 100p;
+      background-image: url("./drone.png");
+      background-origin: 50% 50%;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+      perspective: 1000px;
+      transform-style: preserve-3d;
+      --z_rot: 0deg;
+      transform: rotateZ(var(--z_rot));
+      transition: transform 0.5s cubic-bezier(0.68, -0.1, 0.32, 1.3);
+      z-index: 100;
+    }
+
+    .prop-container1 {
+      perspective: 1000px;
+      transform-style: preserve-3d;
+      transform: rotateX(102deg) translate3d(119px, 54px, 39px);
+      position: absolute;
+      z-index: 1;
+    }
+
+    .prop-container2 {
+      perspective: 1000px;
+      transform-style: preserve-3d;
+      transform: rotateX(102deg) translate3d(225px, 42px, 39px);
+      position: absolute;
+    }
+
+    .prop-container3 {
+      perspective: 1000px;
+      transform-style: preserve-3d;
+      transform: rotateX(102deg) translate3d(300px, 1px, 35px);
+      position: absolute;
+    }
+
+    .prop-container4 {
+      perspective: 1000px;
+      transform-style: preserve-3d;
+      transform: rotateX(102deg) translate3d(39px, -62px, 39px);
+      position: absolute;
+    }
+
+    .prop-container5 {
+      perspective: 1000px;
+      transform-style: preserve-3d;
+      transform: rotateX(102deg) translate3d(297px, -79px, 39px);
+      position: absolute;
+    }
+
+    .prop-container6 {
+      perspective: 1000px;
+      transform-style: preserve-3d;
+      transform: rotateX(102deg) translate3d(39px, 1px, 39px);
+      position: absolute;
+    }
+
+    .prop {
+      font-size: 90px;
+      transform-origin: center center;
+      z-index: -1;
+    }
+
+    .prop1 {
+      transform: rotateZ(159deg);
+      animation: 0.2s linear 0s infinite prop_rot;
+    }
+
+    @keyframes prop_rot {
+      0% {
+        transform: rotateZ(0deg);
+      }
+
+      50% {
+        transform: rotateZ(180deg)
+      }
+
+      100% {
+        transform: rotateZ(359deg);
+      }
+    }
+
+    .tether {
+      width: 1px;
+      border-left: solid black;
+      top: var(--drone_height);
+      position: absolute;
+      height: var(--tether_length);
+      transition: height var(--transition_time) ease-in-out,
+        top 2s cubic-bezier(0.68, -0.1, 0.32, 1.3);
+      margin-top: -5px;
+    }
+
+    .tether::after {
+      content: "C";
+      top: calc(var(--tether_length) - 8px);
+      position: absolute;
+      transition: top var(--transition_time) ease-in-out;
+      transform: rotate(91deg);
+      left: -9px;
+      font-size: 20px;
+    }
+
+    .frame {
+      width: 1000px;
+      background-color: blue;
+      position: fixed;
+      top: var(--frame_y_pos);
+      transition: top var(--transition_time) ease-in-out;
+    }
+
+    .main-scroller {
+      height: calc(var(--lower_drone_key_height) + var(--lower_tether_key_height) + 10 * var(--raise_tether_key_height));
+      position: absolute;
+    }
+
+    .positioner {
+      border: dashed red;
+      position: relative;
+    }
+
+    .positioner-drone {
+      height: var(--lower_drone_key_height);
+      position: relative;
+      top: -15px;
+      z-index: 100;
+    }
+
+    .positioner-tether {
+      height: var(--lower_tether_key_height);
+    }
+
+    .positioner-frame {
+      height: var(--raise_tether_key_height);
+    }
+
+    .positioner-drone-raise {
+      height: var(--raise_drone_key_height);
+    }
+
+    .positioner-horz-scroller {
+      height: var(--horz_scroll_key_height);
+    }
+
+    .panel-horz-scroller-container {
+      width: var(--frame_width);
+      overflow: hidden;
+      position: relative;
+      box-shadow: 2px 2px 10px 5px grey, -2px -2px 10px 5px grey;
+    }
+
+    /* All the panel styles  */
+    .panel-horz-flex-scroller {
+      display: flex;
+      flex-direction: row;
+      flex-flow: nowrap;
+      overflow: hidden;
+      height: var(--frame_height);
+      width: var(--frame_horz_scroller_width);
+      position: relative;
+    }
+
+    .panel-container-main {
+      display: grid;
+      grid-template-rows: auto auto;
+      width: var(--frame_width);
+      position: relative;
+      justify-items: center;
+    }
+
+    .year {
+      margin-left: 10px;
+      color: #000000;
+      padding: 5px;
+      transition: transform 1s;
+      top: 10px;
+    }
+
+    .panel-year {
+      grid-row-start: 2;
+      font-size: 1.5rem;
+      font-weight: 400;
+      grid-row-end: 2;
+    }
+
+    .panel-main {
+      grid-row-start: 1;
+      grid-row-end: 1;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 25px;
+      justify-content: space-between;
+      padding: 30px;
+      border: 2px solid gray;
+      box-shadow: 2px 2px 3px 0px gray;
+      position: relative;
+      border-radius: 5px;
+      overflow: hidden;
+      background-color: whitesmoke;
+    }
+
+    .panel-text-container {
+      flex-basis: 200px;
+      min-width: 300px;
+      max-width: 582px;
+      flex-grow: 1.0;
+      flex-shrink: 1.0;
+    }
+
+    .panel-text-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .panel-text-content {
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .panel-right-image-container {
+      height: auto;
+    }
+
+    .panel-image {
+      display: block;
+      object-fit: contain;
+      object-position: 50% 50%;
+      width: 200px;
+      height: 100%;
+    }
+
+    .year-bar {
+      display: flex;
+      flex-direction: row;
+      width: var(--frame_width);
+      height: 50px;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    .year-bar-magnified {
+      display: flex;
+      flex-direction: row;
+      width: var(--frame_width);
+      justify-content: space-evenly;
+      align-items: center;
+      font-size: x-large;
+      height: 50px;
+      position: relative;
+      left: calc(0px - var(--frame_x_scroll_pos));
+      z-index: 0;
+    }
+
+    .panel-vert-container {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: var(--frame_y_pos);
+      transition: top var(--transition_time) ease-in-out;
+    }
+
+    .date-container {
+      position: relative;
+    }
+
+    .date-magnifier {
+      border: solid 2px;
+      position: absolute;
+      top: 0px;
+      left: var(--frame_x_scroll_pos);
+      width: var(--date_magnifier_width);
+      border-radius: 50px;
+      overflow: hidden;
+      background: radial-gradient(#ffbc00, #e0ad1f);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background">
+  </div>
+  <!-- Positioner Keys -->
+  <div class="main-scroller">
+    <div id="positioner-drone" class="positioner positioner-drone">drone</div>
+    <div id="positioner-tether" class="positioner positioner-tether">tether</div>
+    <div id="positioner-frame" class="positioner positioner-frame">frame</div>
+    <div id="positioner-drone-raise" class="positioner positioner-drone-raise">frame</div>
+    <div id="positioner-horz-scroller" class="positioner positioner-horz-scroller">tether2</div>
+  </div>
+  <div id="vert-flex-container" class="fixed-vert-flex">
+    <!-- Drone and Tether -->
+    <div id="drone-tether2">
+      <div id="drone_tether1" class="drone-tether-container">
+        <div class="drone">
+          <div class="prop-container1">
+            <div class="prop prop1">X</div>
+          </div>
+          <div class="prop-container2">
+            <div class="prop prop1">X</div>
+          </div>
+          <div class="prop-container3">
+            <div class="prop prop1">X</div>
+          </div>
+          <div class="prop-container4">
+            <div class="prop prop1">X</div>
+          </div>
+          <div class="prop-container5">
+            <div class="prop prop1">X</div>
+          </div>
+          <div class="prop-container6">
+            <div class="prop prop1">X</div>
+          </div>
+        </div>
+        <div id="tether1" class="tether"></div>
+      </div>
+    </div>
+    <!-- Panels -->
+    <div class="panel-vert-container">
+      <div id="panel-horz-scroller" class="panel-horz-scroller-container">
+        <div class="panel-horz-flex-scroller">
+          <!-- Panel 1 -->
+          <div class="panel-container-main">
+            <div class="panel-year ">
+              <div class="year year-start-y">2016<h2 hidden>No Commercial Flights</h2>
+              </div>
+            </div>
+            <div class="panel-main below-viewport">
+              <div class="panel-left-image-container">
+                <img title="" src="./uncle%20sam.jpg" class="panel-image" alt="">
+              </div>
+              <div class="panel-text-container">
+                <h3 class="panel-text-title">With few exceptions, commercial use of drones is illegal. <p
+                    class="panel-text-content">In 2013, Amazon's Jeff Bezos famously predicts that drones will be making
+                    regular deliveries by 2018.</p>
+                </h3>
+              </div>
+              <div class="panel-right-image-container">
+                <img title="" src="./Waivers-none.png" class="panel-image" alt="">
+              </div>
+            </div>
+          </div>
+          <!-- Panel 2 -->
+          <div class="panel-container-main">
+            <div class="panel-year">
+              <div class="year year-start-y">2017<h2 hidden>No Commercial Flights</h2>
+              </div>
+            </div>
+            <div class="panel-main below-viewport">
+              <div class="panel-left-image-container">
+                <img title="" src="./uncle%20sam.jpg" class="panel-image" alt="">
+              </div>
+              <div class="panel-text-container">
+                <h3 class="panel-text-title">With few exceptions, commercial use of drones is illegal. <p
+                    class="panel-text-content">In 2013, Amazon's Jeff Bezos famously predicts that drones will be making
+                    regular deliveries by 2018.</p>
+                </h3>
+              </div>
+              <div class="panel-right-image-container">
+                <img title="" src="./Waivers-none.png" class="panel-image" alt="">
+              </div>
+            </div>
+          </div>
+          <!-- Panel 3 -->
+          <div class="panel-container-main">
+            <div class="panel-year">
+              <div class="year year-start-y">2018<h2 hidden>No Commercial Flights</h2>
+              </div>
+            </div>
+            <div class="panel-main below-viewport">
+              <div class="panel-left-image-container">
+                <img title="" src="./uncle%20sam.jpg" class="panel-image" alt="">
+              </div>
+              <div class="panel-text-container">
+                <h3 class="panel-text-title">With few exceptions, commercial use of drones is illegal. <p
+                    class="panel-text-content">In 2013, Amazon's Jeff Bezos famously predicts that drones will be making
+                    regular deliveries by 2018.</p>
+                </h3>
+              </div>
+              <div class="panel-right-image-container">
+                <img title="" src="./Waivers-none.png" class="panel-image" alt="">
+              </div>
+            </div>
+          </div>
+          <!-- Panel 4 -->
+          <div class="panel-container-main">
+            <div class="panel-year">
+              <div class="year year-start-y">2019<h2 hidden>No Commercial Flights</h2>
+              </div>
+            </div>
+            <div class="panel-main below-viewport">
+              <div class="panel-left-image-container">
+                <img title="" src="./uncle%20sam.jpg" class="panel-image" alt="">
+              </div>
+              <div class="panel-text-container">
+                <h3 class="panel-text-title">With few exceptions, commercial use of drones is illegal. <p
+                    class="panel-text-content">In 2013, Amazon's Jeff Bezos famously predicts that drones will be making
+                    regular deliveries by 2018.</p>
+                </h3>
+              </div>
+              <div class="panel-right-image-container">
+                <img title="" src="./Waivers-none.png" class="panel-image" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="date-container">
+        <div class="year-bar">
+          <div>2015</div>
+          <div>2016</div>
+          <div>2017</div>
+          <div>2019</div>
+          <div>2020</div>
+          <div>2021</div>
+          <div>2024</div>
+          <div>2025</div>
+        </div>
+        <div class="date-magnifier">
+          <div class="year-bar-magnified">
+            <div>2015</div>
+            <div>2016</div>
+            <div>2017</div>
+            <div>2019</div>
+            <div>2020</div>
+            <div>2021</div>
+            <div>2024</div>
+            <div>2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./AnimSeq.js"></script>
+  <script>
+
+    // Key frame positioners elements
+    let drone_positioner = document.getElementById("positioner-drone");
+    let tether_positioner = document.getElementById("positioner-tether");
+    let frame_positioner = document.getElementById("positioner-frame");
+    let drone_positioner_raise = document.getElementById("positioner-drone-raise");
+
+    let frame_horz_scroller_positioner = document.getElementById("positioner-horz-scroller");
+
+    // Animation elements
+    let drone_container = document.getElementById("drone_tether1")
+    let drone_container2 = document.getElementById("drone_tether1")
+
+    let drone_sprite = document.querySelector(".drone")
+
+    let tether = document.getElementById("tether1");
+    let container = document.getElementById("vert-flex-container");
+
+    let horz_scroller = document.getElementById("panel-horz-scroller");
+
+
+    // Animation transition constants
+    const lower_drone_key_height = getComputedStyle(container).getPropertyValue("--lower_drone_key_height");
+    const lower_drone_key_height_int = Number.parseInt(getComputedStyle(container).getPropertyValue("--lower_drone_key_height"));
+
+    const lower_tether_key_height = getComputedStyle(container).getPropertyValue("--lower_tether_key_height");
+    const lower_tether_key_height_int = Number.parseInt(getComputedStyle(container).getPropertyValue("--lower_tether_key_height"));
+
+    const raise_tether_key_height = getComputedStyle(container).getPropertyValue("--raise_tether_key_height");
+    const raise_tether_key_heigh_int = Number.parseInt(getComputedStyle(container).getPropertyValue("--raise_tether_key_height"));
+
+    const raise_drone_key_height = getComputedStyle(container).getPropertyValue("--raise_drone_key_height");
+    const raise_drone_key_height_int = Number.parseInt(getComputedStyle(container).getPropertyValue("--raise_drone_key_height"));
+
+    const scroll_horz_key_height = getComputedStyle(container).getPropertyValue("--horz_scroll_key_height");
+    const scroll_horz_key_height_int = Number.parseInt(getComputedStyle(container).getPropertyValue("--horz_scroll_key_height")) / 100 * window.innerHeight;
+
+    const tether_length_start = getComputedStyle(container).getPropertyValue("--tether_length_start");
+    const frame_y_pos_start = getComputedStyle(container).getPropertyValue("--frame_y_pos_start");
+    const frame_y_pos_start_int = Number.parseInt(getComputedStyle(container).getPropertyValue("--frame_y_pos_start"));
+    const frame_height_int = Number.parseInt(getComputedStyle(container).getPropertyValue("--frame_height"));
+    const frame_width = Number.parseInt(getComputedStyle(container).getPropertyValue("--frame_width"));
+    const frame_scroller_width = Number.parseInt(getComputedStyle(container).getPropertyValue("--frame_horz_scroller_width")) / 100 * window.innerHeight;
+    const date_magnifier_width = Number.parseInt(getComputedStyle(container).getPropertyValue("--date_magnifier_width"));
+
+    let lowerDrone = (function () {
+      let complete = false;
+      return (key_elem) => {
+        const rect = key_elem.getBoundingClientRect();
+        if (rect.top < 0) {
+          if (rect.top > -lower_drone_key_height_int) {
+            //sequence is running.
+            container.style.setProperty('--drone_pos_y', Math.abs(rect.top) + "px");
+            container.style.setProperty('--tether_length', tether_length_start);
+            container.style.setProperty('--frame_y_pos', frame_y_pos_start);
+            complete = false;
+            return RUNNING;
+          }
+          else if (!complete) {
+            //done with sequence.
+            container.style.setProperty('--drone_pos_y', lower_drone_key_height);
+            container.style.setProperty('--tether_length', tether_length_start);
+            container.style.setProperty('--frame_y_pos', frame_y_pos_start);
+            complete = true;
+            return DONE;
+          }
+          else {
+            return COMPLETE;
+          }
+        }
+        else {
+          complete = false;
+          return NOT_RUNNING;
+        }
+      }
+
+    })();
+
+    function lower_tether() {
+      let complete = false;
+      return (key_elem) => {
+        //Get the top of the positioner. Set the top of bottom of the tether
+        const rect = key_elem.getBoundingClientRect();
+        if (rect.top < 0) {
+          if (rect.top > -lower_tether_key_height_int) {
+            // seq running
+            container.style.setProperty('--frame_y_pos', frame_y_pos_start);
+            container.style.setProperty('--tether_length', Math.abs(rect.top) + "px");
+            complete = false;
+            return RUNNING;
+          }
+          else if (!complete) {
+            // seq completed
+            container.style.setProperty('--tether_length', lower_tether_key_height);
+            complete = true;
+            return DONE;
+          }
+          else {
+            return COMPLETE;
+          }
+
+        }
+        else {
+          complete = false;
+          return NOT_RUNNING;
+        }
+      }
+    }
+
+    function raise_tether() {
+      let complete = false;
+      return (key_elem) => { //Get the top of the positioner. Set the top of bottom of the tether
+        const rect = key_elem.getBoundingClientRect();
+        if (rect.top < 0) {
+          if (rect.top > -raise_tether_key_heigh_int) {
+            //running
+            container.style.setProperty('--tether_length', frame_y_pos_start_int - frame_height_int - Math.abs(Number(rect.top)) + "px");
+            container.style.setProperty('--frame_y_pos', frame_y_pos_start_int - Math.abs(rect.top) + "px");
+            complete = false;
+            return RUNNING;
+          }
+          else if (!complete) {
+            //done
+            container.style.setProperty('--tether_length', frame_y_pos_start_int - frame_height_int - raise_tether_key_heigh_int + "px");
+            container.style.setProperty('--frame_y_pos', frame_y_pos_start_int - raise_tether_key_heigh_int + "px");
+            complete = true;
+            return DONE;
+          }
+          else {
+            return COMPLETE;
+
+
+
+          }
+        }
+        else {
+          complete = false;
+          return NOT_RUNNING;
+        }
+      }
+    }
+
+    let raiseDrone = (function () {
+      let complete = false;
+      return (key_elem) => {
+        const rect = key_elem.getBoundingClientRect();
+        if (rect.top < 0) {
+          if (rect.top > -raise_drone_key_height_int) {
+            //sequence is running.
+            container.style.setProperty('--drone_pos_y', 500 + rect.top + "px");
+            container.style.setProperty('--tether_length', tether_length_start);
+            horz_scroller.scrollTo(0, 0);
+            container.style.setProperty('--frame_x_scroll_pos', 0 + "px");
+
+            complete = false;
+            return RUNNING;
+          }
+          else if (!complete) {
+            //done with sequence.
+            container.style.setProperty('--drone_pos_y', -200 + "px");
+            container.style.setProperty('--tether_length', tether_length_start);
+            complete = true;
+            return DONE;
+          }
+          else {
+            return COMPLETE;
+          }
+        }
+        else {
+          complete = false;
+          return NOT_RUNNING;
+        }
+      }
+
+    })();
+
+    const min_year_magnifier_x = 50;
+    const max_year_magnifier_x = frame_width - date_magnifier_width;
+    function horz_scroll() {
+      let complete = false;
+      return (key_elem) => {
+        const rect = key_elem.getBoundingClientRect();
+        if (rect.top < 0) {
+          if (rect.top > -scroll_horz_key_height_int) {
+            //running
+            horz_scroller.scrollTo(Math.abs(rect.top), 0);
+            container.style.setProperty('--frame_x_scroll_pos', Math.min(horz_scroller.scrollLeft * (frame_width / frame_scroller_width), max_year_magnifier_x) + "px");
+            // container.style.setProperty('--frame_x_scroll_pos', horz_scroller.scrollLeft * (frame_width / frame_scroller_width) + "px");
+
+            complete = false;
+            return RUNNING;
+          }
+          else if (!complete) {
+            //done
+
+            complete = true;
+            return DONE;
+          }
+          else {
+            return COMPLETE;
+          }
+        }
+        else {
+          horz_scroller.scrollTo(0, 0);
+          container.style.setProperty('--frame_x_scroll_pos', 0 + "px");
+
+
+          complete = false;
+          return NOT_RUNNING;
+        }
+      }
+    }
+
+    // Animation sequences
+    let lowerDroneSeq = new AnimSequence(lowerDrone, drone_container, drone_positioner);
+    let lowerTetherSeq = new AnimSequence(lower_tether(), tether, tether_positioner);
+    let raiseTetherSeq = new AnimSequence(raise_tether(), tether, frame_positioner);
+    let raiseDroneSeq = new AnimSequence(raiseDrone, drone_container, drone_positioner_raise);
+    let horzSrcollerSeq = new AnimSequence(horz_scroll(), horz_scroller, frame_horz_scroller_positioner);
+
+    // Run the animation
+    async function runAnimationSequence() {
+      let seq_done = await lowerDroneSeq.play(1);
+      if (seq_done) {
+        let seq_done = await lowerTetherSeq.play(2);
+        if (seq_done) {
+          let seq_done = await raiseTetherSeq.play(3);
+          if (seq_done) {
+            let seq_done = await raiseDroneSeq.play(4);
+            if (seq_done) {
+              let seq_done = await horzSrcollerSeq.play(5);
+            }
+          }
+
+        }
+        return true;
+      }
+    }
+
+    document.addEventListener("scroll", async () => {
+      await runAnimationSequence();
+    });
+
+    setInterval(() => {
+      runAnimationSequence();
+    }, 100);
+
+    (() => {
+      let move_sum = 0;
+      let trans_end = true;
+      drone_container.addEventListener('transitionend', () => {
+        trans_end = true;
+        drone_sprite.style.setProperty("--z_rot", 0 + "deg");
+      })
+      window.addEventListener('mousemove', e => {
+        if (trans_end) {
+          let drone_pos = drone_sprite.getBoundingClientRect()
+          let drone_center = drone_pos.x + (drone_pos.width / 2);
+          move_sum += e.clientX - drone_center;
+          drone_container.style.setProperty("--x_trans", move_sum + "px");
+          let rotation = Math.min(Math.abs(e.movementX), 15) * Math.sign(e.movementX);
+          drone_sprite.style.setProperty("--z_rot", rotation + "deg")
+          trans_end = false;
+        }
+      });
+
+    })();
+  </script>
+</body>

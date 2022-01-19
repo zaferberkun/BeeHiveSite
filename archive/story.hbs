@@ -1,0 +1,181 @@
+<head>
+  <link href="./css/story.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- <div class="slide-over-container" id="board1">
+    <video autoplay="true" muted loop="" disablepictureinpicture="" controls crossorigin="use-credentials"
+      data-blockid="n-SMXFRv" preload="auto">
+      <source
+        src="https://cdn.arcgis.com/sharing/rest/content/items/27a6d538c1fe456bbce638572d0058be/resources/5J8cxK7aHQ_zlEHV9gooZ.mp4?token="
+        type="video/mp4" class="jsx-1558512584">
+    </video>
+    <div class="caption-left">Test Caption</div>
+  </div>
+  <div class="slide-over-container" id="board2">
+    <div class="caption-right">At approximately 1.5 feet deep, The Hive has a narrow, unobtrusive profile that can fit
+      just about anywhere.</div>
+  </div>
+  <div class="slide-over-container" id="board3">
+    <div class="caption-right">Test Caption3</div>
+  </div> -->
+  <div style="font-size: 100px;">This is a place holder</div>
+  <!-- slide 1 -->
+  <div class="slide-container">
+    <div class="image-container">
+      <img class="first-image stacked-image" src="./images/187%20Washington%20Chicago%20Steet-small.jpg">
+    </div>
+    <div class="caption-container caption-container-justify-left">
+      <div class="caption">This is a caption right <img src="./images/187%20Washington%20Chicago%20Steet-small.jpg">
+      </div>
+    </div>
+  </div>
+  <!-- slide 2 -->
+  <div class="slide-container">
+    <div class="image-container">
+      <img class="first-image stacked-image" src="./images/187%20Washington%20Chicago%20Steet-small.jpg">
+    </div>
+    <div class="caption-container caption-container-justify-left">
+      <div class="caption">This is a caption left <img src="./images/187%20Washington%20Chicago%20Steet-small.jpg">
+      </div>
+    </div>
+  </div>
+  <!-- slide 3 -->
+  <div class="slide-container">
+    <div class="image-container">
+      <img class="first-image stacked-image" src="./images/187%20Washington%20Chicago%20Steet-small.jpg">
+      <img class="stacked-image" src="./images/144%20W%2073rd%20NYC.png">
+    </div>
+    <div class="caption-container caption-container-justify-left has-sibling">
+      <div class="caption">This is a caption left 2 <img src="./images/187%20Washington%20Chicago%20Steet-small.jpg">
+      </div>
+    </div>
+    <div class="caption-container caption-container-justify-left">
+      <div class="caption">This is a caption left 3 <img src="./images/144%20W%2073rd%20NYC.png"></div>
+    </div>
+  </div>
+  <div class="slide-container">
+    <div class="image-container">
+      <img class="first-image stacked-image" src="./images/187%20Washington%20Chicago%20Steet-small.jpg">
+    </div>
+    <div class="caption-container caption-container-justify-left">
+      <div class="caption">This is a caption left <img src="./images/187%20Washington%20Chicago%20Steet-small.jpg">
+      </div>
+    </div>
+  </div>
+  <script>
+    async function getImg() {
+      let test = await fetch("./images/144%20W%2073rd%20NYC.png");
+      return test;
+    }
+
+
+    // getImg().then(async function parseblob(data) {
+    //   let image = [];
+    //   image[0] = await data.blob();
+    //   let testimage = document.getElementById("testimage");
+    //   let imgurl = URL.createObjectURL(image[0]);
+    //   testimage.src = imgurl;
+    // }).catch((e) => console.log("Problem loading picture ", e))
+
+
+    function partialInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return ((rect.top > 0 && rect.top <= (window.innerHeight ||
+        document.documentElement.clientHeight)) || (rect.bottom > 0 && rect.bottom <= (window.innerHeight ||
+          document.documentElement.clientHeight)));
+
+    }
+
+    function entirelyInViewport(element) {
+      const rect = element.getBoundingClientRect();
+
+      let inViewPort = ((rect.top > 0 && rect.top <= (window.innerHeight ||
+        document.documentElement.clientHeight)) || (rect.bottom > 0 && rect.bottom <= (window.innerHeight ||
+          document.documentElement.clientHeight)));
+
+      let straddleViewPort = rect.top <= 0 && (rect.bottom >= (window.innerHeight ||
+        document.documentElement.clientHeight));
+
+      return inViewPort || straddleViewPort;
+    }
+
+    // Loop through the captions and figure out which picture in the set should be made visible
+    // const _captions = document.querySelectorAll(".caption");
+
+    const _sections = document.querySelectorAll(".slide-container");
+
+    //Loop through all the slides. Set the "--slide_count" based on number of captions counted.
+    //Map the caption pics to the slide image slots.
+    for (section of _sections) {
+      section.imageMap = new Map();
+
+      let slide_captions = section.querySelectorAll(".caption");
+      let slidePics = section.querySelectorAll(".stacked-image");
+      section.style.setProperty("--slide_count", String(slide_captions.length));
+      for (let i in slide_captions) {
+        section.imageMap.set(slide_captions[i], slidePics[i]);
+      }
+    }
+
+
+    function activeSection() {
+      let currSection = null;
+      for (let section of _sections) {
+        if (entirelyInViewport(section)) {
+          currSection = section;
+        }
+      }
+      return currSection;
+    }
+
+    function activeCaption(captions) {
+      for (let caption of captions) {
+        if (partialInViewport(caption)) {
+          console.log("Found caption ", caption.id)
+          return caption;
+        }
+      }
+      return false;
+    }
+
+    let imgTransitionFunc = (currentImg, slideImg, captionImg) => {
+      // If the pic changed, fade out the old pic
+      if (currentImg) {
+        currentImg.style.opacity = "0.0";
+        currentImg.style.visibility = "hidden";
+      }
+      // and then next cycle, fade in the new one.
+      // slideImg.src = captionImg.src;
+      slideImg.style.visibility = "visible";
+      slideImg.style.opacity = "1.0";
+
+    }
+
+    let swapImages = (() => {
+      let currentImg = null;
+      let currentSection = null;
+      return () => {
+
+        // If dealing with the same section, and image changed, then
+        // perform image transition.
+        let caption;
+        currentSection = activeSection();
+        if (currentSection)
+          if (caption = activeCaption(currentSection.querySelectorAll(".caption"))) {
+            let slideImg = activeSection().imageMap.get(caption);
+            if (slideImg != currentSection.currentImg) {
+              let captionImg = caption.querySelector("img");
+
+              imgTransitionFunc(currentSection.currentImg, slideImg, captionImg)
+              currentSection.currentImg = slideImg;
+
+            }
+          }
+      }
+    })(imgTransitionFunc);
+
+    //If caption is visible, pull out its image and set the slide's image src to the src.
+    setInterval(swapImages, 500);
+  </script>
+</body>

@@ -1,0 +1,474 @@
+:root {
+  --background_filter       : 0px;
+  --box_rot_degs            : 0deg;
+  --box_rot_key_height      : 8000px;
+  --drone_pos_y             : 0px;
+  --frame_height            : 50vh;
+  --frame_width             : 75vw;
+  --frame_y_pos_start       : 175vh;
+  --frame_y_pos             : 100vh;
+  --lower_drone_key_height  : 100px;
+  --tether_length_key_height: 140vh;
+  --raise_drone_key_height  : 50px;
+  --tether_length_start     : 20px;
+  --tether_length           : 20px;
+  --transition_time         : 0.5s;
+  --drone_scaling           : 1.0;
+}
+
+@media (max-width:900px) {
+  :root {
+    --frame_width      : 90vw;
+    --frame_height     : 90vh;
+    --frame_y_pos_start: 140vh;
+    --drone_scaling    : 0.5;
+  }
+}
+
+.background {
+  position             : fixed;
+  width                : 100vw;
+  height               : 100vh;
+  margin               : 0px;
+  padding              : 0px;
+  left                 : 0px;
+  top                  : 0px;
+  background-image     : url("./187 Washington Chicago Steet.png");
+  background-position  : center;
+  background-repeat    : no-repeat;
+  background-size      : cover;
+  background-attachment: fixed;
+  filter               : blur(var(--background_filter));
+}
+
+.three-d-root {
+  position          : fixed;
+  perspective       : 1200px;
+  transform-style   : preserve-3d;
+  height            : 100vh;
+  width             : 101vw;
+  transform-origin  : center;
+  perspective-origin: 815px 256px;
+}
+
+.three-d-rotation-axis {
+  transform: rotateY(var(--box_rot_degs));
+}
+
+.three-d-container {
+  transform-style : preserve-3d;
+  transform-origin: center 0px calc(0px - var(--frame_width) / 2);
+  width           : var(--frame_width);
+  height          : 522px;
+}
+
+.three-d-container-drone {
+  transform-style: preserve-3d;
+  transform      : rotateY(0deg);
+  /* border      : red solid; */
+  width          : 100vw;
+  height         : 100vh;
+}
+
+/* Define the transforms necessary to create the 3d box */
+.three-d-right-side {
+  transform       : translateX(var(--frame_width)) rotateY(90deg);
+  transform-origin: left;
+}
+
+.three-d-back-side {
+  transform       : translateZ(calc(0px - var(--frame_width))) rotateY(180deg);
+  transform-origin: center;
+}
+
+.three-d-left-side {
+  transform       : translateX(calc(0px - var(--frame_width))) rotateY(-90deg);
+  transform-origin: right;
+}
+
+/*..*/
+
+.fixed-vert-flex {
+  display       : flex;
+  flex-direction: column;
+  align-items   : center;
+  position      : fixed;
+  width         : 100%;
+  animation     : 1s ease-in-out 0s infinite alternate both running drone-hover;
+  top           : 0px;
+}
+
+/* The hovering animation */
+@keyframes drone-hover {
+  0% {
+    transform: translateY(-4px);
+  }
+
+  100% {
+    transform: translateY(5px);
+  }
+}
+
+
+.drone-tether-container {
+  display       : flex;
+  flex-direction: column;
+  align-items   : center;
+  width         : 100%;
+  --drone_height: 100px;
+  --x_trans     : 0px;
+  margin-top    : var(--drone_pos_y);
+  z-index       : 100;
+  transform     : translateX(var(--x_trans));
+  transition    : margin 2s cubic-bezier(0.68, -0.1, 0.32, 1.3), transform 1.5s ease-out;
+}
+
+.drone {
+  width              : 400px;
+  height             : var(--drone_height);
+  /* background-color: blueviolet; */
+  margin-top: 8px;
+  background-image   : url("./drone.png");
+  background-origin  : 50% 50%;
+  background-position: 50% 50%;
+  background-repeat  : no-repeat;
+  background-size    : auto 100%;
+  perspective        : 1000px;
+  transform-style    : preserve-3d;
+  --z_rot            : 0deg;
+  transform          : rotateZ(var(--z_rot)) scale(var(--drone_scaling));
+  transition         : transform 0.5s cubic-bezier(0.68, -0.1, 0.32, 1.3);
+  z-index            : 100;
+}
+
+.prop-container1 {
+  perspective    : 1000px;
+  transform-style: preserve-3d;
+  transform      : rotateX(102deg) translate3d(119px, 54px, 39px);
+  position       : absolute;
+  z-index        : 1;
+}
+
+.prop-container2 {
+  perspective    : 1000px;
+  transform-style: preserve-3d;
+  transform      : rotateX(102deg) translate3d(225px, 42px, 39px);
+  position       : absolute;
+}
+
+.prop-container3 {
+  perspective    : 1000px;
+  transform-style: preserve-3d;
+  transform      : rotateX(102deg) translate3d(300px, 1px, 35px);
+  position       : absolute;
+}
+
+.prop-container4 {
+  perspective    : 1000px;
+  transform-style: preserve-3d;
+  transform      : rotateX(102deg) translate3d(39px, -62px, 39px);
+  position       : absolute;
+}
+
+.prop-container5 {
+  perspective    : 1000px;
+  transform-style: preserve-3d;
+  transform      : rotateX(102deg) translate3d(297px, -79px, 39px);
+  position       : absolute;
+}
+
+.prop-container6 {
+  perspective    : 1000px;
+  transform-style: preserve-3d;
+  transform      : rotateX(102deg) translate3d(39px, 1px, 39px);
+  position       : absolute;
+}
+
+.prop {
+  font-size       : 90px;
+  transform-origin: center center;
+  z-index         : -1;
+}
+
+.prop1 {
+  transform: rotateZ(159deg);
+  animation: 0.2s linear 0s infinite prop_rot;
+}
+
+@keyframes prop_rot {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  50% {
+    transform: rotateZ(180deg)
+  }
+
+  100% {
+    transform: rotateZ(359deg);
+  }
+}
+
+.tether {
+  width      : 1px;
+  border-left: solid black;
+  top        : calc(var(--drone_height)*var(--drone_scaling));
+  position   : absolute;
+  height     : var(--tether_length);
+  transition : height var(--transition_time) ease-in-out,
+    top 2s cubic-bezier(0.68, -0.1, 0.32, 1.3);
+  margin-top: -5px;
+}
+
+.tether::after {
+  content   : "C";
+  top       : calc(var(--tether_length) - 8px);
+  position  : absolute;
+  transition: top var(--transition_time) ease-in-out;
+  transform : rotate(91deg);
+  left      : -9px;
+  font-size : 20px;
+}
+
+.main-vert-scroller {
+  height        : max-content;
+  position      : relative;
+  padding-bottom: 25vh;
+  display       : flex;
+  flex-direction: row;
+  width         : 100vw;
+}
+
+.positioner {
+  /* border: dashed red; */
+  position: relative;
+}
+
+.positioner-drone {
+  height  : var(--lower_drone_key_height);
+  position: relative;
+  top     : -15px;
+  z-index : 100;
+}
+
+.positioner-tether {
+  height: var(--tether_length_key_height);
+}
+
+.positioner-frame {
+  height: var(--tether_length_key_height);
+}
+
+.positioner-drone-raise {
+  height: var(--raise_drone_key_height);
+}
+
+.panel-horz-scroller-container {
+  width              : var(--frame_width);
+  overflow           : hidden;
+  position           : absolute;
+  transform-style    : preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* All the panel styles  */
+.panel-horz-flex-scroller {
+  display  : flex;
+  flex-flow: nowrap;
+  overflow : hidden;
+  height   : var(--frame_height);
+  width    : var(--frame_width);
+  position : relative;
+}
+
+.panel-container-main {
+  width        : var(--frame_width);
+  position     : relative;
+  justify-items: center;
+}
+
+.panel-main {
+  display         : flex;
+  flex-direction  : row;
+  align-items     : center;
+  justify-content : space-evenly;
+  gap             : 25px;
+  border          : 2px solid gray;
+  box-shadow      : 2px 2px 3px 0px gray;
+  position        : relative;
+  border-radius   : 5px;
+  overflow        : hidden;
+  background-image: linear-gradient(var(--box_rot_degs), white, #41628abf);
+  height          : var(--frame_height);
+  padding-inline  : 20px;
+  padding-block   : 20px;
+  box-sizing      : border-box;
+}
+
+@media (max-width:900px) {
+  .panel-main {
+    flex-direction: column;
+    gap           : 30px;
+  }
+}
+
+.panel-text-container {
+  flex-basis : 200px;
+  min-width  : 300px;
+  max-width  : 582px;
+  flex-grow  : 1.0;
+  flex-shrink: 1.0;
+  max-height : 200px;
+}
+
+.panel-text-title {
+  font-size  : 1.0rem;
+  font-weight: 600;
+  border     : solid 1px grey;
+  max-height : inherit;
+  padding    : 5px;
+  overflow   : visible;
+  box-sizing : border-box;
+}
+
+@media (max-width:900px) {
+  .panel-text-title {
+    overflow: scroll;
+  }
+}
+
+.panel-text-content {
+  font-size  : 0.9rem;
+  font-weight: 400;
+}
+
+.panel-right-image-container {
+  height: min-content;
+  width : min-content;
+}
+
+.panel-left-image-container {
+  height: min-content;
+}
+
+.panel-image-waivers {
+  display        : block;
+  object-fit     : contain;
+  object-position: 50% 50%;
+  height         : 174px;
+}
+
+@media (max-width:900px) {
+  .panel-image-waivers {
+    height: 160px;
+  }
+}
+
+.panel-image {
+  display        : block;
+  object-fit     : contain;
+  object-position: 50% 50%;
+  height         : 200px;
+  max-width      : 100%;
+}
+
+@media (min-width:900px) {
+  .panel-image {
+    height: 300px;
+  }
+}
+
+.panel-image-beehive {
+  display        : block;
+  object-fit     : contain;
+  object-position: 50% 50%;
+  height         : 48px;
+}
+
+.beehive-info {
+  background-color: #f1c041;
+  padding         : 20px;
+  border          : solid 1px;
+  font-size       : 1.0rem;
+  box-shadow      : 2px 2px 2px grey;
+  overflow        : visible;
+  text-align      : center;
+}
+
+@media (max-width:900px) {
+  .beehive-info {
+    overflow: scroll;
+  }
+}
+
+.panel-vert-container {
+  align-items    : center;
+  transform-style: preserve-3d;
+  display        : flex;
+  flex-direction : column;
+  position       : fixed;
+  top            : var(--frame_y_pos);
+  transition     : top var(--transition_time) ease-in-out;
+  width          : 100vw;
+  justify-items  : inherit;
+}
+
+.top {
+  background-color: white;
+  transform-style : preserve-3d;
+  width           : var(--frame_width);
+  height          : var(--frame_width);
+  /* border       : solid green; */
+  transform       : rotateX(270deg);
+  transform-origin: top;
+  position        : absolute;
+}
+
+.year {
+  --year_height: 450px;
+  font-size    : 2em;
+  /* border    : solid green; */
+  color        : white;
+  padding      : 20px;
+}
+
+.year-1-frame-first {
+  text-align: center;
+  height    : calc(1.5 * var(--year_height));
+}
+
+.year-1-frame-last {
+  text-align: center;
+  height    : 100vh;
+}
+
+.year-1-frame {
+  text-align: center;
+  height    : calc(1 * var(--year_height));
+}
+
+.year-2-frame {
+  text-align: center;
+  height    : calc(2 * var(--year_height));
+}
+
+.year-3-frame {
+  text-align: center;
+  height    : calc(3 * var(--year_height));
+}
+
+.sticky-year {
+  position: sticky;
+}
+
+@media (min-width:900px) {
+  .sticky-year {
+    top: 50vh;
+  }
+}
+
+@media (max-width:900px) {
+  .sticky-year {
+    top: 95vh;
+  }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- meta -->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta http-equiv="Content-Type">
+  <meta lang="en">
+  <meta charset="UTF-8">
+  <meta content="text/html">
+  <meta name="description"
+    content="Our focus at BeeHive is on the physical infrastructure, technology, education and coordination that will enable urban communities to fully benefit from the future of urban air mobility (a future that is arriving very rapidly).">
+  <link rel="canonical" href="https://cap20.org/" />
+  <title>Beehive Technologies</title>
+  <link rel="apple-touch-icon" sizes="120x120" href="./favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+  <link rel="manifest" href="./favicon/site.webmanifest">
+  <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#7d95df">
+  <!-- <link rel='stylesheet' type="text/css" href='hub.css'> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=block" rel="stylesheet">
+  <style>
+    .three-d-container {
+      height: 3000px;
+      display: block;
+      position: static;
+    }
+
+    .three-d-parent {
+      display: flex;
+      flex-direction: column;
+      perspective: 1572px;
+      transform-style: preserve-3d;
+      height: 100vh;
+      width: 100vw;
+      border: solid black;
+      transform-origin: center center 200px;
+      justify-content: center;
+      align-content: center;
+      justify-items: center;
+      align-items: center;
+      transform: rotate3d(0, 0, 1, 296deg) rotate3d(1, 0, 0, 60deg) rotate3d(0, 1, 0, 264deg);
+    .three-d-parent-fixed {
+      display: flex;
+      flex-direction: colum
+      display: flex;
+      flex-direction: column;
+      transform-style: preserve-3d;
+      position: fixed;
+      transform: rotateX(315deg);
+      top: 0px;
+    .box {
+      transform-origin: center;
+      width: 200px;
+      height: 200px;
+      background-image: linear-gradient(355deg, black, transparent);
+      text-align: center;
+      vertical-align: middle;
+      transform-origin: center center 200px;
+      position: absolute;
+    }
+  </style>
+
+<body>
+  <div class="three-d-container"></div>
+  <div class="three-d-parent-fixed">
+    <div class="three-d-parent">
+      <div class="box" style="transform:rotateX(0deg)">Text</div>
+      <div class="box" style="transform:rotateX(-20deg) ">Text2</div>
+      <div class="box" style="transform: rotateX(-40deg)">Text</div>
+      <div class="box" style="transform:rotateX(-60deg) ">Text2</div>
+      <div class="box" style="transform:rotateX(-70deg) ">Text</div>
+      <div class="box" style="transform:rotateX(-90deg) ">Text2</div>
+    </div>
+  </div>
+</body>

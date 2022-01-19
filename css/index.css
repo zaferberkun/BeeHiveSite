@@ -1,0 +1,375 @@
+:root {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing : antialiased;
+  font-size              : 16px;
+  font-family            : "ludo",
+    "Nunito",
+    "Avenir Next",
+    "Helvetica Neue",
+    sans-serif,
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Helvetica Neue",
+    sans-serif;
+  font-weight           : 300;
+  line-height           : 1.25;
+  --base_background     : #d2cdc1;
+  --secondary_background: #0a1212;
+  background-color      : var(--base_background);
+  text-rendering        : optimizelegibility;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+body {
+  margin: 0px;
+}
+
+@media (max-width:700px) {
+  :root {
+    font-size: 20px;
+  }
+}
+
+.title-container {
+  background-image   : url('./images/night-drone3.webp');
+  background-position: center;
+  background-size    : cover;
+  width              : 100%;
+  height             : 400px;
+  color              : honeydew;
+}
+
+.title {
+  font-size          : 2rem;
+  font-weight        : bold;
+  text-align         : center;
+  text-shadow        : 2px 2px #000000;
+  padding-inline     : 5px;
+  margin-block-end   : 0.2em;
+  /* background-color: rgba(0, 0, 0, .3); */
+}
+
+.subtitle {
+  font-size          : 1.1rem;
+  margin-block-start : 0.0em;
+  margin-block-end   : 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end  : 0px;
+  font-weight        : bold;
+  text-align         : center;
+  text-shadow        : 2px 2px #000000;
+  /* background-color: rgba(0, 0, 0, .3); */
+}
+
+.interactive-card:hover {
+  transform       : translateZ(20px);
+  background-color: rgba(236, 214, 9, 0.808);
+  box-shadow      : 10px 10px 10px 0 rgba(150, 150, 150, .5);
+}
+
+.mission {
+  font-size       : .6rem;
+  background-color: #422c0c;
+  color           : beige;
+  padding         : 5px;
+  box-sizing      : border-box;
+  text-shadow     : 1px 1px black;
+  font-weight     : 600;
+  width           : 100vw;
+  vertical-align  : middle;
+  display         : flex;
+  justify-content : center;
+}
+
+.vert-flex {
+  display       : flex;
+  flex-direction: column;
+  align-items   : center;
+  left          : 0px;
+  top           : 0px;
+  box-sizing    : border-box;
+}
+
+.vert-flex-main {
+  width     : 100%;
+  overflow-x: auto;
+}
+
+.inner-vert-flex {
+  display       : flex;
+  flex-direction: column;
+  align-items   : center;
+  box-sizing    : border-box;
+  width         : 100%;
+}
+
+.horz-flex {
+  display        : flex;
+  flex-flow      : row;
+  flex-wrap      : wrap;
+  justify-content: flex-start;
+}
+
+.vert-flex-vert-center {
+  justify-content: center;
+  width          : 100%;
+}
+
+.base-card {
+  overflow: hidden;
+}
+
+.explore-card {
+  position        : relative;
+  background      : #fff;
+  box-shadow      : 3px 3px 10px 0 rgba(76, 76, 76, .5);
+  border-radius   : 9px;
+  transition      : all .15s ease-in-out;
+  width           : 100%;
+  background-color: #af917cb5;
+  padding-top     : 10px;
+}
+
+.explore-image {
+  height        : 100%;
+  object-fit    : cover;
+  vertical-align: middle;
+  box-sizing    : border-box;
+}
+
+.explore-title {
+  text-align        : center;
+  font-size         : .90rem;
+  margin-block-start: 10px;
+  margin-block-end  : 10px;
+  margin-left       : 10px;
+  margin-right      : 10px;
+  box-sizing        : border-box;
+}
+
+.explore-content {
+  text-align   : center;
+  font-size    : .6rem;
+  margin-bottom: 30px;
+  word-wrap    : break-word;
+  margin-left  : 10px;
+  margin-right : 10px;
+  box-sizing   : border-box;
+}
+
+.explore-gap {
+  gap: 10px
+}
+
+.explore-margin {
+  margin-left  : 10%;
+  margin-right : 10%;
+  margin-top   : 40px;
+  margin-bottom: 20px;
+}
+
+.team-gap {
+  gap: 26px;
+}
+
+.team-width {
+  width: 100%
+}
+
+.team-background {
+  background-color: var(--secondary_background);
+}
+
+.team-margin {
+  box-sizing   : border-box;
+  padding-left : 10%;
+  padding-right: 10%;
+  width        : 100vw;
+}
+
+.team-card {
+  background   : rgb(201, 196, 196);
+  border-radius: 7px;
+  box-sizing   : border-box;
+  width        : 100%;
+  box-shadow   : 4px 4px 6px #ffffff82;
+}
+
+.team-image {
+  height    : 200px;
+  object-fit: cover;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+
+.team-name {
+  text-align        : center;
+  font-size         : .9rem;
+  margin-block-start: 10px;
+  margin-block-end  : 10px;
+  margin-left       : 0px;
+  margin-right      : 0px;
+  width             : 72%;
+  background-color  : rgba(255, 217, 0, 0.288);
+  box-sizing        : border-box;
+}
+
+.team-bio {
+  text-align   : left;
+  font-size    : .6rem;
+  margin-bottom: 0px;
+  padding-left : 10px;
+  padding-right: 10px;
+  width        : 100%;
+  box-sizing   : border-box;
+  justify-self : flex-end;
+}
+
+.team-bio-school {
+  margin-top    : 0px;
+  margin-bottom : 0px;
+  padding-bottom: 5px;
+  padding-left  : 10px;
+  padding-right : 10px;
+  text-align    : left;
+  font-size     : .5rem;
+  width         : 100%;
+  box-sizing    : border-box;
+}
+
+.heading1 {
+  align-self      : flex-end;
+  width           : 100%;
+  text-align      : left;
+  border-left     : solid 3px #422c0c;
+  padding-left    : 10px;
+  background-image: linear-gradient(89deg, #8a7e6f, var(--base_background) 60%);
+  font-size       : 1.3rem;
+  margin-bottom   : 0.2rem;
+  margin-top      : 0rem;
+}
+
+.info-card {
+  padding-inline: 20%;
+  font-weight   : 600;
+  font-size     : 0.9rem;
+}
+
+.info-margin {
+  margin-top: 40px;
+}
+
+.story-background {
+  --base_background: #0a1212;
+  background-color : var(--base_background);
+}
+
+.story-card-background {
+  --base_background: white;
+  background-color : var(--base_background);
+}
+
+.footer {
+  font-size       : .5rem;
+  color           : white;
+  background-color: #777878;
+  width           : 100vw;
+  margin-top      : 20px;
+  justify-content : space-around;
+}
+
+@media (max-width: 600px) {
+  .explore-image {
+    height: 175px;
+  }
+
+  .team-margin {
+    box-sizing   : border-box;
+    padding-left : 2%;
+    padding-right: 2%;
+    padding-block: 14%;
+  }
+
+  .team-card {
+    margin-inline: 18px;
+  }
+
+  .info-card {
+    padding-inline: 5%;
+    font-weight   : 600;
+    font-size     : 0.9rem;
+  }
+
+  .footer {
+
+    justify-content: space-between;
+
+  }
+}
+
+@media (min-width:600px) and (max-width: 800px) {
+  .explore-image {
+    height: 200px;
+  }
+
+  .explore-card {
+    width: calc((100% - (1* 30px))/ 2);
+  }
+
+  .team-card {
+    width        : calc((100% - (0* 30px))/ 3);
+    margin-inline: 10px;
+  }
+
+  .team-margin {
+    box-sizing   : border-box;
+    padding-left : 5%;
+    padding-right: 5%;
+  }
+}
+
+@media (min-width:800px) and (max-width: 1199px) {
+  .explore-card {
+    width: calc((100% - (2 * 30px))/ 3);
+  }
+
+  .team-card {
+    width: calc((100% - (1 * 30px))/ 2);
+  }
+
+  .team-margin {
+    box-sizing   : border-box;
+    padding-left : 15%;
+    padding-right: 15%;
+  }
+}
+
+@media (min-width:1200px) {
+  .explore-image {
+    height: 200px;
+  }
+
+  .explore-card {
+    width: calc((100% - (3 * 30px))/4);
+  }
+
+  .team-card {
+    width: calc((100% - (2 * 30px))/ 3);
+  }
+
+  .team-margin {
+    box-sizing    : border-box;
+    padding-left  : 20%;
+    padding-right : 20%;
+    margin-top    : 40px;
+    padding-bottom: 40px;
+    padding-top   : 40px;
+    width         : 100%;
+  }
+}
+
+.three-d {
+  transform-style   : preserve-3d;
+  perspective       : 500px;
+  perspective-origin: 50% 50%;
+}

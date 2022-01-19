@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- meta -->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta http-equiv="Content-Type">
+  <meta lang="en">
+  <meta charset="UTF-8">
+  <meta content="text/html">
+  <meta name="description"
+    content="Our focus at BeeHive is on the physical infrastructure, technology, education and coordination that will enable urban communities to fully benefit from the future of urban air mobility (a future that is arriving very rapidly).">
+  <link rel="canonical" href="https://cap20.org/" />
+  <title>Beehive Technologies</title>
+  <link rel="apple-touch-icon" sizes="120x120" href="./favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+  <link rel="manifest" href="./favicon/site.webmanifest">
+  <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#7d95df">
+  <!-- <link rel='stylesheet' type="text/css" href='hub.css'> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=block" rel="stylesheet">
+  <style>
+    :root {
+      font-size: 14px;
+      font-family: "ludo", "Avenir Next", "Helvetica Neue", sans-serif, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+      font-weight: 300;
+      line-height: 1.25;
+      background-color: rgb(224, 173, 31);
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 100px auto;
+      grid-template-rows: auto;
+    }
+
+    .calendar-title-container {
+      grid-column-start: 1;
+      grid-row-start: 1;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      writing-mode: vertical-lr;
+      text-orientation: upright;
+      position: fixed;
+      font-size: 4rem;
+      height: 100%;
+      left: 20px;
+    }
+
+    .flex-body-container {
+      grid-column-start: 2;
+      grid-row-start: 1;
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+      align-items: flex-start;
+      padding-bottom: 100px;
+      perspective: 1000px;
+      justify-self: center;
+      border-left: solid 3px black;
+    }
+
+    .panel-container-main {
+      display: grid;
+      grid-template-rows: auto auto;
+      margin-bottom: 20px;
+      perspective: 1000px;
+      position: sticky;
+      top: 0px;
+      position: sticky;
+    }
+
+    /* Style to use when off the screen. */
+    .below-viewport {
+      visibility: hidden;
+      opacity: 0.0;
+      transform: translate3d(0, 100px, 100px) rotateX(10deg);
+    }
+
+    .in-viewport {
+      visibility: visible;
+      opacity: 1.0;
+    }
+
+    .panel-title {
+      grid-row-start: 1;
+      grid-column-start: 2;
+      margin-block-start: 20px;
+      text-align: left;
+      transform: translateY(10px);
+    }
+
+    .panel-flex-container-row {
+      grid-row-start: 2;
+      grid-row-end: 2;
+      grid-column-start: 2;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .panel-year {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      grid-column-start: 1;
+      grid-row-start: 2;
+      align-self: stretch;
+      font-size: 1.5rem;
+      font-weight: 400;
+      grid-row-end: 2;
+      justify-self: stretch;
+    }
+
+    .year {
+      margin-left: 10px;
+      background-color: #bdbdbd;
+      color: #000000;
+      position: relative;
+      left: -42px;
+      padding: 5px;
+      transition: transform 1s, opacity 1s;
+      box-shadow: 2px 3px 5px 1px #ffeb3b;
+      border-radius: 5px;
+      border: solid;
+      border-color: #0017b7;
+      position: sticky;
+      top: 10px;
+      opacity: 1.0;
+    }
+
+    .calendar-year-switch {
+      opacity: 0.0;
+    }
+
+    .year-start-y {
+      transform: translate3d(-20px, 200px, 10px);
+    }
+
+    .year-end-y {
+      transform: translate3d(-20px, 10px, 10px);
+    }
+
+    /* .year::before {
+      content: '➤';
+      position: absolute;
+      left: -20px;
+    } */
+    /* .panel-year::before {
+      content: 'ds';
+      min-width: 10px;
+      border-radius: 15px;
+      background-color: black;
+      font-size: 10px;
+      vertical-align: middle;
+      position: absolute;
+    } */
+    #data-arrow {
+      overflow: visible;
+      position: absolute;
+      z-index: 100;
+    }
+
+    .panel-main {
+      grid-row-start: 2;
+      grid-row-end: 2;
+      grid-column-start: 2;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 25px;
+      justify-content: space-between;
+      padding: 30px;
+      box-shadow: 2px 2px 3px 0px gray;
+      position: relative;
+      border-radius: 5px;
+      overflow: hidden;
+      background-color: whitesmoke;
+      transition: transform 0.5s ease-in 0.5s, opacity 0.5s ease-in 0.5s, visibility 0.5s 0.5s;
+      height: 100vh;
+    }
+
+    .panel-right-image-container {
+      height: 300px;
+    }
+
+    .panel-image {
+      display: block;
+      object-fit: contain;
+      object-position: 50% 50%;
+      width: 200px;
+      height: 100%;
+    }
+
+    .panel-text-container {
+      flex-basis: 200px;
+      min-width: 300px;
+      max-width: 582px;
+      flex-grow: 1.0;
+      flex-shrink: 1.0;
+    }
+
+    .panel-beehive-info {
+      background-color: rgb(214, 201, 18);
+      font-weight: 500;
+    }
+
+    .panel-text-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .panel-text-content {
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .calendar-title {
+      color: black;
+      height: 100%;
+      animation: title-slide 1s ease-in-out;
+    }
+
+    .calendar-title-switch {
+      animation: title-slide2 1s ease-in-out;
+    }
+
+    @keyframes title-slide {
+      0% {
+        transform: translateX(-100px);
+      }
+    }
+
+    @keyframes title-slide2 {
+      0% {
+        transform: translateX(-100px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-grid">
+    <div class="calendar-title-container">
+      <div id="calendar-title" class="calendar-title">No Commercial Flights </div>
+    </div>
+    <div class="flex-body-container">
+      <!-- First slide -->
+      <div class="panel-container-main">
+        <div class="panel-year ">
+          <div class="year year-start-y">2016<h2 hidden>No Commercial Flights</h2>
+          </div>
+        </div>
+        <div class="panel-main below-viewport">
+          <div class="panel-left-image-container">
+            <img title="" src="./uncle%20sam.jpg" class="panel-image" alt="">
+          </div>
+          <div class="panel-text-container">
+            <h3 class="panel-text-title">With few exceptions, commercial use of drones is illegal. <p
+                class="panel-text-content">In 2013, Amazon's Jeff Bezos famously predicts that drones will be making
+                regular deliveries by 2018.</p>
+            </h3>
+          </div>
+          <div class="panel-right-image-container">
+            <img title="" src="./Waivers-none.png" class="panel-image" alt="">
+          </div>
+        </div>
+      </div>
+      <!-- Second slide -->
+      <div class="panel-container-main">
+        <div class="panel-year">
+          <div class="year year-start-y">2017<h2 hidden>Part 107</h2>
+          </div>
+        </div>
+        <div class="panel-main below-viewport">
+          <div class="panel-left-image-container">
+            <img title="" src="./drone-compensation.png" class="panel-image" alt="">
+          </div>
+          <div class="panel-text-container">
+            <h3 class="panel-text-title">The FAA introduces the first rule allowing the legal use of drones for
+              commercial purposes. <p class="panel-text-content">Title 14 of The Code of Federal Regulations (CFR), Part
+                107 allows any person who receives their remote pilot certificate to fly a drone for compensation, but
+                there are some major limitations -- most notably, drones cannot be operated beyond visual line of sight,
+                over people, or at night. </p>
+              <p class="panel-text-content">Also, since there is no drone specific type-certification. Part 107 pilots
+                are solely responsible for ensuring the drone's operational safety.</p>
+            </h3>
+          </div>
+          <div class="panel-right-image-container">
+            <img title="" src="./Waivers-none.png" class="panel-image" alt="">
+          </div>
+        </div>
+      </div>
+      <!-- Third Slide -->
+      <div class="panel-container-main">
+        <div class="panel-year ">
+          <div class="year year-start-y">2018 <h2 hidden>LAANC, IPP, UTM</h2>
+          </div>
+        </div>
+        <div class="panel-main below-viewport">
+          <div class="panel-left-image-container">
+            <img title="" src="./drone-compensation.png" class="panel-image" alt="">
+          </div>
+          <div class="panel-text-container">
+            <p class="panel-text-content"><strong><u>LAANC (Low Altitude Authorization and Notification Capability)
+                  introduced.</u></strong> LAANC allows drone operators to request flight authorization from ATC
+              controllers using a simple app. </p>
+            <p class="panel-text-content"><strong><u>The DOT and FAA begin UAS IPP (Integration Pilot
+                  Program)</u></strong> to accelerate development of drone technology and regulations. </p>
+            <p class="panel-text-content"><strong><u>NASA and FAA begin UAS Traffic Management (UTM) Research Transition
+                  Plan</u></strong> to test various technical UTM capability levels.</p>
+          </div>
+          <div class="panel-right-image-container">
+            <img title="" src="./Waivers-none.png" class="panel-image" alt="">
+          </div>
+        </div>
+      </div>
+      <!-- Fourth Slide -->
+      <div class="panel-container-main below-viewport">
+        <h2 class="panel-title">2019 - Part 135, BeeHive Founded</h2>
+        <div class="panel-flex-container-row">
+          <div class="panel-left-image-container">
+            <img title="" src="./drone-compensation.png" class="panel-image" alt="">
+          </div>
+          <div class="panel-text-container">
+            <h3 class="panel-text-title">Drone Operators Certified to fly under "Part 135". <p
+                class="panel-text-content"> An existing FAA rule, "Part 135", written to regulate the operation of "on
+                demand" air carrier services, such as charter flights and cargo transportation, is granted to the first
+                drone "airline" operators. This is the first time drones are allowed to transport cargo without a waiver
+                and exempted from state or local laws.</p>
+              <p class="panel-text-content">In general, this certification has been touted by drone operators as
+                allowing them to operate "unlimited" drone air transport operations, but, as with part 107, waivers are
+                still needed for BVLOS, flights over people and at night, and are generally limited to pre-authorized
+                rural or suburban areas. And, as with part 107, only a single drone is allowed per pilot.</p>
+              <p class="panel-text-content">This change does, however, move the industry and regulators a step closer to
+                enabling full-scaled drone delivery operations.</p>
+            </h3>
+          </div>
+          <div class="panel-right-image-container">
+            <img title="" src="./Waivers-none.png" class="panel-image" alt="">
+          </div>
+        </div>
+      </div>
+      <!-- Fifth slide -->
+      <div class="panel-container-main below-viewport">
+        <div class="panel-flex-container-row">
+          <div class="panel-left-image-container">
+            <img title="" src="./beehive-logo.png" class="panel-image" alt="beehive logo">
+          </div>
+          <div class="panel-text-container beehive-info">Founding members of BeeHive meet for the first time to discuss
+            economic, environmental, and safety issues related to "last mile" logistics. </p>
+          </div>
+          <div class="panel-right-image-container">
+            <img title="" src="./beehive-logo.png" class="panel-image" alt="beehive logo">
+          </div>
+        </div>
+      </div>
+      <!-- Sixth slide -->
+      <div class="panel-container-main below-viewport">
+        <h2 class="panel-title">2016 - Part 107</h2>
+        <div class="panel-flex-container-row">
+          <div class="panel-left-image-container">
+            <img title="" src="./drone-compensation.png" class="panel-image" alt="">
+          </div>
+          <div class="panel-text-container">
+            <h3 class="panel-text-title">The FAA introduces the first rule allowing the legal use of drones for
+              commercial purposes. <p class="panel-text-content">Title 14 of The Code of Federal Regulations (CFR), Part
+                107 allows any person who receives their remote pilot certificate to fly a drone for compensation, but
+                there are some major limitations -- most notably, drones cannot be operated beyond visual line of sight,
+                over people, or at night. </p>
+              <p class="panel-text-content">Also, since there is no drone specific type-certification. Part 107 pilots
+                are solely responsible for ensuring the drone's operational safety.</p>
+            </h3>
+          </div>
+          <div class="panel-right-image-container">
+            <img title="" src="./Waivers-none.png" class="panel-image" alt="">
+          </div>
+        </div>
+      </div>
+      <!-- Seventh Slide -->
+      <div class="panel-container-main below-viewport">
+        <h2 class="panel-title">2017 - LAANC, IPP, UTM</h2>
+        <div class="panel-flex-container-row">
+          <div class="panel-left-image-container">
+            <img title="" src="./drone-compensation.png" class="panel-image" alt="">
+          </div>
+          <div class="panel-text-container">
+            <p class="panel-text-content"><strong><u>LAANC (Low Altitude Authorization and Notification Capability)
+                  introduced.</u></strong> LAANC allows drone operators to request flight authorization from ATC
+              controllers using a simple app. </p>
+            <p class="panel-text-content"><strong><u>The DOT and FAA begin UAS IPP (Integration Pilot
+                  Program)</u></strong> to accelerate development of drone technology and regulations. </p>
+            <p class="panel-text-content"><strong><u>NASA and FAA begin UAS Traffic Management (UTM) Research Transition
+                  Plan</u></strong> to test various technical UTM capability levels.</p>
+          </div>
+          <div class="panel-right-image-container">
+            <img title="" src="./Waivers-none.png" class="panel-image" alt="">
+          </div>
+        </div>
+      </div>
+      <!-- Eighth Slide -->
+      <div class="panel-container-main below-viewport">
+        <h2 class="panel-title">2019 - Part 135, BeeHive Founded</h2>
+        <div class="panel-flex-container-row">
+          <div class="panel-left-image-container">
+            <img title="" src="./drone-compensation.png" class="panel-image" alt="">
+          </div>
+          <div class="panel-text-container">
+            <h3 class="panel-text-title">Drone Operators Certified to fly under "Part 135". <p
+                class="panel-text-content"> An existing FAA rule, "Part 135", written to regulate the operation of "on
+                demand" air carrier services, such as charter flights and cargo transportation, is granted to the first
+                drone "airline" operators. This is the first time drones are allowed to transport cargo without a waiver
+                and exempted from state or local laws.</p>
+              <p class="panel-text-content">In general, this certification has been touted by drone operators as
+                allowing them to operate "unlimited" drone air transport operations, but, as with part 107, waivers are
+                still needed for BVLOS, flights over people and at night, and are generally limited to pre-authorized
+                rural or suburban areas. And, as with part 107, only a single drone is allowed per pilot.</p>
+              <p class="panel-text-content">This change does, however, move the industry and regulators a step closer to
+                enabling full-scaled drone delivery operations.</p>
+            </h3>
+          </div>
+          <div class="panel-right-image-container">
+            <img title="" src="./Waivers-none.png" class="panel-image" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> <!-- body -->
+  <script>
+
+    let date_line = document.getElementById("date-line");
+
+    let panels = document.querySelectorAll(".panel-main");
+
+    let years = document.querySelectorAll(".year");
+
+    let main_containters = document.querySelectorAll(".panel-container-main")
+
+    let yearPanelMap = new Map();
+
+    //Match up main panels with years
+    for (let container of main_containters) {
+      let main_panel = container.querySelector(".panel-main");
+      let year = container.querySelector(".year");
+      yearPanelMap.set(year, main_panel);
+    }
+
+    (function setInitialViewPortPosition(panels) {
+      for (let panel of panels) {
+        setBelowViewport(panel, .5)
+        if (!panel.isBelowViewportLowerEdge) {
+          panel.classList.replace("below-viewport", "in-viewport")
+        }
+      }
+      for (let year of years) {
+        setBelowViewport(year, .5);
+        //Figure out what the title font size should be for this panel.
+        year.titlefontSize = Math.max(1, Math.trunc(40 / year.querySelector("h2").innerText.length)) + "rem";
+        if (!year.isBelowViewportLowerEdge) {
+          year.classList.replace("year-start-y", "year-end-y")
+          year.titlefontSize = Math.max(1, Math.trunc(40 / year.querySelector("h2").innerText.length)) + "rem";
+        }
+      }
+    })(panels);
+
+    function setBelowViewport(panel, percent) {
+      const rect = panel.getBoundingClientRect();
+      panel.isBelowViewportLowerEdge = rect.top > 0 && (rect.top + rect.height * percent) >= (window.innerHeight ||
+        document.documentElement.clientHeight)
+    }
+    // percent is what percentage of the panel must be on he screen before transition occurs.
+    function checkPositionForTransition(panel, percent, below_vp_class, in_vp_class) {
+      if (panel.isBelowViewportLowerEdge) {
+        // Check if panel has entered viewport
+        setBelowViewport(panel, percent);
+        if (!panel.isBelowViewportLowerEdge) {
+          panel.classList.replace(below_vp_class, in_vp_class)
+          return panel;
+        }
+      }
+      else {
+        // Check if panel has left view port.
+        setBelowViewport(panel, 0.0);
+        if (panel.isBelowViewportLowerEdge) {
+          panel.classList.replace(in_vp_class, below_vp_class);
+        }
+        else {
+          return panel;
+        }
+      }
+    }
+
+    function doScrollTransitionMainPanel() {
+      for (let panel of panels) {
+        checkPositionForTransition(panel, .50, "below-viewport", "in-viewport");
+      }
+    }
+
+    function doScrollTransitionYears() {
+      let latest_year;
+      for (let year of years) {
+        if (checkPositionForTransition(year, .1, "year-start-y", "year-end-y")) {
+          latest_year = year;
+        }
+      }
+      return latest_year;
+    }
+
+    title = document.getElementById("calendar-title");
+
+    let prev_year;
+    document.addEventListener("scroll", () => {
+      doScrollTransitionMainPanel();
+      let year = doScrollTransitionYears();
+
+      if (year !== prev_year) {
+        let currentTitle = year.querySelector("h2");
+        title.innerText = currentTitle.innerText;
+        title.style.fontSize = year.titlefontSize;
+        //trigger the animation
+        title.classList.toggle("calendar-title-switch");
+        year.classList.remove("calendar-year-switch");
+
+
+        // Make the panel visible;
+        let mainPanel = yearPanelMap.get(year);
+
+        //Hide the previous panel.
+        if (prev_year) {
+          let prevPanel = yearPanelMap.get(prev_year);
+          prev_year.classList.toggle("calendar-year-switch")
+        }
+        prev_year = year;
+      }
+
+    });
+
+  </script>
+</body>

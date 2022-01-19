@@ -1,0 +1,101 @@
+<head>
+  <link href="./css/about.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="main-vert-flex-about">
+    <div class="section-container">
+      <h1 class="title-about">The Idea</h1>
+      <p class="body-text-about"> We are a small group of engineers and scientists with backgrounds in mechanical
+        engineering, computer science, and avionics that have embraced a future that integrates advanced air mobility
+        systems into our daily lives. </p>
+      <p class="body-text-about"> Our part in this new air mobility paradigm started about a year ago with a
+        brainstorming effort to come up with ways to curtail the exponentially growing environmental impact of
+        e-commerce. Among many other concepts, we looked at ways to reduce or eliminate the use of cardboard and how to
+        simplify and “greenify” package delivery logistics, in particular for the "last mile". </p>
+      <p class="body-text-about"> As we dug further into the problem and tried to imagine what life would look like in
+        the near future, we quickly noticed where things were heading -- the costliest and environmentally impactful
+        part of the e-commerce logistical chain, the “last mile”, was going to quickly be transformed by autonomous
+        Unmanned Aerial Systems (UASs). Once we had this realization, we investigated what role we could play. We
+        researched the various ongoing initiatives, particularly those being shepherded by the FAA and NASA, and became
+        familiar with the activities of the various industry participants. While there is clearly a lot of important
+        research and development being done to create a safe and efficient UAS operating environment (which eventually
+        merged into the National Airspace System), it seemed to us that if UASs were going to be used for package
+        delivery, they would need the physical and technological infrastructure on the ground to do so. </p>
+      <p class="body-text-about"> This quote from NASA’s 2018 Urban Air Mobility Market Study is particularly telling,
+        and still largely holds true today:</p>
+      <p class="quote-about">“There are currently no standards for key last-mile delivery infrastructure; industry
+        remains unaligned on the technical visions and needs for receiving vessels." We decided our challenge would be
+        to implement the “receiving vessel” part of the system. </p>
+    </div>
+    <div class="section-container alternate-section-color">
+      <h1 class="title-about">The Vision</h1>
+      <p class="body-text-about">We do not envision receiving vessels as passive structures in an Unmanned Traffic
+        Management (UTM) system, simply acting as drop off locations for packages; we envision the receiving vessel as a
+        critical part of the UTM infrastructure. There will need to be a standardized way for approaching, landing, and
+        depositing parcels and these factors will need to be considered just as carefully as any other system if a
+        scaled urban UAV package delivery system is going to be realized.
+      <p class="body-text-about"> To this end, we envision a “common carrier” parcel storage and transfer vessel that
+        provides data to help plan navigation and routing for package delivery UAVs and: </p>
+      <ol class="list-about">
+        <li> Is installed at ground level in areas with continuous GNSS line-of-sight and in “urban canyons”, or any
+          GNSS-denied areas, and provides the necessary autonomous navigational support to guide UAVs through approach,
+          landing, delivery, and departure. </li>
+        <li> Has a common protocol and interface for both UAVs and “ground level” user interaction. Integrates into the
+          larger UTM system of systems as an UAS service supplier. </li>
+        <li> Developed and certified to the appropriate safety-critical hardware and software systems standards (e.g.,
+          DO178B/C Level A or C) </li>
+        <li> Is rugged and robust enough to support UAS operations in any city, all year, in all weather conditions.
+        </li>
+        <li> Is modular to expand capacity or upgrade functionality with limited downtime and cost. </li>
+      </ol>
+      </p>
+    </div>
+    <div class="section-container">
+      <h1 class="title-about">The Future</h1>
+      <p class="body-text-about">NASA and the FAA have developed a plan on how numerous UAS service suppliers will be
+        integrated into a larger system, and eventually merged with the NAS (National Airspace System) to create an
+        integrate UTM system. But there seems to be little interest in creating a “common carrier” system for safely
+        landing and transferring packages in an urban environment.
+      <p class="body-text-about"> Carrier-specific delivery lends itself to the further monopolization of an already
+        top-heavy industry. It will also likely lead to consumer confusion and frustration. In contrast, a “common
+        carrier” system provides equal services to large incumbents, new startups, and existing small operations. It
+        also provides a common interface to the public regardless of the carrier. </p>
+      <p class="body-text-about"> We are currently in the research, design, and prototyping phase. We believe we have
+        identified the majority of the use cases and associated technology and have designed and submitted patents for a
+        successful deployment. We are excited to be part of a challenging and transformative industry. </p>
+      </p>
+    </div>
+  </div>
+  <script>
+    function entirelyInViewport(element) {
+      const rect = element.getBoundingClientRect();
+
+      let inViewPort = ((rect.top > 0 && rect.top <= (window.innerHeight ||
+        document.documentElement.clientHeight)) || (rect.bottom > 0 && rect.bottom <= (window.innerHeight ||
+          document.documentElement.clientHeight)));
+
+      let straddleViewPort = rect.top <= 0 && (rect.bottom >= (window.innerHeight ||
+        document.documentElement.clientHeight));
+
+      return inViewPort || straddleViewPort;
+    }
+
+    let titles = document.querySelectorAll('.title-about');
+
+
+    function animateTitles() {
+      for (let title of titles) {
+        if (entirelyInViewport(title)) {
+          title.classList.add('animate-title');
+        }
+        else {
+          title.classList.remove('animate-title');
+        }
+      }
+    }
+
+    setInterval(animateTitles, 250);
+
+  </script>
+</body>

@@ -1,0 +1,133 @@
+/* Temp */
+:root {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing : antialiased;
+  font-size              : 16px;
+  font-family            : "ludo",
+    "Nunito",
+    "Avenir Next",
+    "Helvetica Neue",
+    sans-serif,
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Helvetica Neue",
+    sans-serif;
+  font-weight           : 300;
+  line-height           : 1.25;
+  --base_background     : #d2cdc1;
+  --secondard_background: #0a1212;
+  background-color      : var(--base_background);
+  text-rendering        : optimizelegibility;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+body {
+  margin: 0px;
+}
+
+/* Temp */
+
+.three-d-container-urban {
+  perspective       : 10px;
+  perspective-origin: center bottom;
+  overflow-y        : auto;
+  display           : flex;
+  flex-direction    : column;
+  align-items       : center;
+  width             : 100%;
+  position          : relative;
+}
+
+.background-container-3d-urban {
+  filter           : blur(2px);
+  width            : 100%;
+  height           : 4000px;
+  background-image : url("./images/skyline.jpg");
+  background-repeat: no-repeat;
+  transform-origin : 50% 60%;
+  transform        : translateZ(-50px) scale(7);
+  position         : absolute;
+}
+
+
+.main-vert-flex-urban {
+  display       : flex;
+  flex-direction: column;
+  width         : 100%;
+  align-items   : center;
+  position      : relative;
+  height        : 100%;
+}
+
+.title-urban {
+  font-size : 2.5rem;
+  text-align: center;
+  background: antiquewhite;
+  margin-top: 60px;
+}
+
+.subtitle-urban {
+  font-size : 1.5rem;
+  text-align: center;
+}
+
+.container-urban {
+  width: 60%;
+}
+
+@media (max-width:600px) {
+  .container-urban {
+    width: 90%;
+  }
+}
+
+.section-urban {
+  background-color: #f2f2f2db;
+  margin-block    : 319px;
+}
+
+@media (max-width:600px) {
+  .section-urban {
+    margin-block: 100px;
+  }
+}
+
+
+.horz-flex-urban {
+  display        : flex;
+  flex-direction : column;
+  width          : auto;
+  justify-content: center;
+}
+
+.body-text-urban {
+  font-size   : 1.2rem;
+  flex-basis  : 50%;
+  flex-grow   : 2;
+  padding     : 40px;
+  text-align  : justify;
+  margin-block: 0;
+}
+
+.alt-color-urban {
+  background-color: #f6e6bfd6;
+}
+
+.img-container-urban {
+  align-self    : center;
+  flex-basis    : 50%;
+  padding       : 20px;
+  padding-bottom: 0;
+}
+
+.img-urban {
+  max-width: 100%;
+}
+
+@media (max-width:600px) {
+  .img-urban {
+    object-fit: contain;
+    max-width : 292px;
+    min-width : 244px;
+  }
+}
