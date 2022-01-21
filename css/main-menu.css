@@ -26,7 +26,7 @@
 @media (max-width:700px) {
   .main-menu-bar-fixed-container {
     flex-direction: column;
-    width         : 60vw;
+    width         : 50vw;
     box-shadow    : 2px 2px 2px #0000009c;
   }
 
@@ -49,7 +49,7 @@
 } */
 
 .menu-item {
-  background     : #dedede;
+  background     : #d8cdcd;
   border-radius  : 2px;
   box-shadow     : 2px 2px 2px grey;
   transition     : border-radius 0.5s;
@@ -58,7 +58,6 @@
   padding        : 5px;
   background-clip: padding-box;
   cursor         : pointer;
-  font-size      : 1.3rem;
 }
 
 @media (min-width:700px) and (hover:hover) {
@@ -75,7 +74,7 @@
 }
 
 .hamburger-menu-button {
-  background-color: #7d6d6d94;
+  background-color: #7d6d6d00;
   display         : flex;
   flex-direction  : row;
   flex-wrap       : wrap;
@@ -90,7 +89,7 @@
   position      : fixed;
   top           : 0px;
   width         : auto;
-  left          : -61vw;
+  left          : -51vw;
   transition    : left var(--menu_transition_time);
   will-change   : left;
   z-index       : 1000;
@@ -126,9 +125,25 @@
   transition: all var(--menu_transition_time);
 }
 
+.menu-arrow {
+  background-color: #fff2e1;
+  clip-path       : polygon(50% 50%, 0 0, 0 100%);
+  width           : 15px;
+  height          : 15px;
+  position        : relative;
+  top             : 7px;
+  left            : -2px;
+  transition      : all var(--menu_transition_time);
+}
+
 @media (max-width:701px) {
   .hamburger-menu-button .hamburger-img-rotate {
     transform : rotate(720deg);
+    transition: all var(--menu_transition_time);
+  }
+
+  .hamburger-menu-horz-flex .shrink-menu-arrow {
+    clip-path : polygon(0% 50%, 0 0, 0 100%);
     transition: all var(--menu_transition_time);
   }
 }

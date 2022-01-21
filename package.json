@@ -16,7 +16,7 @@
     "html": "cp *.html ./lib/",
     "favicon": "mkdirp ./lib/favicon && cp -r favicon/* ./lib/favicon",
     "hbs": "mkdirp ./lib/render-templates && cp -r render-templates/* ./lib/render-templates",
-    "start": "node ./lib/beehive-server.js",
+    "start": "node ./beehive-server.js",
     "gcp-build": "npm run build-target",
     "delete": "rm -rf lib",
     "build": "npm run delete && npm run compile && npm run package && npm run css && npm run images && npm run video && npm run html && npm run hbs && npm start",
@@ -24,7 +24,7 @@
     "upload-css": "gsutil -h\"Cache-Control:no-cache\" -h\"Content-Encoding: gzip\" cp -z css ./css/*.css gs://cap20",
     "upload-images": "gsutil -h\"Cache-Control:no-cache\" cp ./images/*.* gs://cap20",
     "cors": "gsutil cors set cors.json gs://cap20",
-    "build-target": "npm run compile && npm run package && npm run favicon"
+    "build-target": "npm run compile"
   },
   "author": "",
   "license": "ISC",

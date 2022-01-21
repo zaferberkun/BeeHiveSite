@@ -1,11 +1,8 @@
 .gcloudignore
 .git
 .gitignore
+cors.json
 node_modules/
-lib/
-images/
 .tmp*
-archive
-scripts
-dist
-watch-html.ts
+archive/
+

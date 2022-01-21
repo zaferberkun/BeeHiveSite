@@ -23,13 +23,21 @@
         <img class="hamburger-tab-image" style="width:100%;height:100%" src="./images/BeeHiveLogoSimple.svg">
       </div>
     </div>
+    <div class="menu-arrow"></div>
   </div>
   <script>
-    //Activate the menu bar using the hidden elements to cross-reference the page IDs.
 
     let about_page = document.getElementById("about");
 
     let menu_items = document.querySelectorAll(".menu-item");
+
+    let main_menu_button = document.querySelector('.hamburger-menu-button');
+    let main_menu_arrow = document.querySelector('.menu-arrow');
+
+    let main_menu = document.querySelector('.hamburger-menu-horz-flex');
+    let main_menu_img = main_menu_button.querySelector('img');
+
+    let explore_cards = document.querySelectorAll(".explore-card");
 
     let pages = [];
 
@@ -40,13 +48,22 @@
       }
     }
 
-    function activate_page(page) {
+    function activate_page(page, name) {
       hideAllPages();
       page.style.display = "block";
       page.classList.add('display-transition');
       setTimeout(() => {
         window.scrollTo(0, 0);
       }, 100);
+      if (name)
+        history.pushState({ page: name }, "hello");
+    }
+
+    function toggle_menu_visible() {
+      //Toggle Menu Open Class
+      main_menu.classList.toggle('menu-visible');
+      main_menu_img.classList.toggle('hamburger-img-rotate');
+      main_menu_arrow.classList.toggle('shrink-menu-arrow');
     }
 
     function activate_navigation(menu_items, pages) {
@@ -59,37 +76,36 @@
               pages.push(page);
             item.click_page = page;
             item.addEventListener("click", () => {
-              activate_page(item.click_page);
-              //Toggle Menu Open Class
-              main_menu.classList.toggle('menu-visible');
-              main_menu_img.classList.toggle('hamburger-img-rotate');
+              activate_page(item.click_page, page_name);
+              toggle_menu_visible();
             });
           }
         }
       }
     }
 
-    let explore_cards = document.querySelectorAll(".explore-card");
-
     activate_navigation(menu_items, pages);
     activate_navigation(explore_cards)
-
 
     let hub_page = document.getElementById("hub");
 
     //Activate the "hub" page when things have finished loading.
     window.addEventListener('load', () => {
-      activate_page(hub_page);
+      activate_page(hub_page, "hub");
     });
 
-    let main_menu_button = document.querySelector('.hamburger-menu-button');
-    let main_menu = document.querySelector('.hamburger-menu-horz-flex');
-    let main_menu_img = main_menu_button.querySelector('img');
-
     main_menu_button.addEventListener('click', () => {
-      //Toggle Menu Open Class
-      main_menu.classList.toggle('menu-visible');
-      main_menu_img.classList.toggle('hamburger-img-rotate');
+      toggle_menu_visible();
     })
+
+    // Manage the browser history for or SPA.
+    window.addEventListener('popstate', (event) => {
+      if (event.state) {
+        let page = document.getElementById(event.state.page);
+        if (page)
+          activate_page(page,)
+      }
+    });
+
   </script>
 </body>

@@ -2,7 +2,6 @@ import exhbs from 'express-handlebars';
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { Document } from 'mongodb';
 import hb from 'handlebars';
 
 
