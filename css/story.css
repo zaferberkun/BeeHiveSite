@@ -1,3 +1,7 @@
+body {
+  margin: 0px;
+}
+
 .header {
   --header_height: 20px;
   width          : 100%;
@@ -14,13 +18,15 @@
 }
 
 .footer {
-  height    : 100px;
+  height: 50px;
   width     : 100%;
   background: rgb(207, 204, 204);
   z-index   : 100;
   color     : rgb(0, 0, 0);
   position  : sticky;
   top       : 100vh;
+  border-top: solid darkgrey;
+  font-size: 0.8rem;
 }
 
 .footer-flex {
@@ -57,8 +63,7 @@
   text-align      : center;
   color           : #904e00;
   max-width       : 90%;
-  font-weight     : 600;
-  border          : solid 2px red;
+  font-weight: 300;
   transition      : border 2s;
 }
 
@@ -87,6 +92,7 @@
   text-align        : center;
   color             : white;
   max-width         : 90%;
+  font-weight: 300;
 }
 
 .separator {
@@ -125,10 +131,12 @@
 
 .intro-title {
   font-size: 3.0rem;
+  font-weight: 300;
 }
 
 .intro-text {
   font-size: 1.5rem;
+  font-weight: 300;
 }
 
 
@@ -275,13 +283,14 @@
 
 .caption-title {
   font-size   : 2.5rem;
+  font-weight: 300;
   margin-block: 0.5em;
 }
 
 .caption-text {
   font-size   : 1.5rem;
   margin-block: 0.5em;
-  font-weight : 600;
+  font-weight: 300;
 }
 
 .caption-right {

@@ -33,7 +33,7 @@
   padding              : 0px;
   left                 : 0px;
   top                  : 0px;
-  background-image     : url("./187 Washington Chicago Steet.png");
+  background-image     : url("./images/187 Washington Chicago Steet.png");
   background-position  : center;
   background-repeat    : no-repeat;
   background-size      : cover;
@@ -48,7 +48,7 @@
   height            : 100vh;
   width             : 101vw;
   transform-origin  : center;
-  perspective-origin: 815px 256px;
+  perspective-origin: 857px 256px;
 }
 
 .three-d-rotation-axis {
@@ -127,8 +127,8 @@
   width              : 400px;
   height             : var(--drone_height);
   /* background-color: blueviolet; */
-  margin-top: 8px;
-  background-image   : url("./drone.png");
+  margin-top         : 8px;
+  background-image   : url("./images/drone.png");
   background-origin  : 50% 50%;
   background-position: 50% 50%;
   background-repeat  : no-repeat;
@@ -318,7 +318,7 @@
   max-width  : 582px;
   flex-grow  : 1.0;
   flex-shrink: 1.0;
-  max-height : 200px;
+  max-height: fit-content;
 }
 
 .panel-text-title {
@@ -338,7 +338,7 @@
 }
 
 .panel-text-content {
-  font-size  : 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
 }
 

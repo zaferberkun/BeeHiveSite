@@ -2,15 +2,9 @@ import exhbs from 'express-handlebars';
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { EventEmitter } from 'events';
-import * as $db_constants from './constants/DB_Constants.js';
 import { Document } from 'mongodb';
 import hb from 'handlebars';
-import { ServerEvents } from './constants/ServerEvents.js';
-import * as dbinit from './db/db-init.js';
-import { MONGO_URI } from './authentication/secrets.js'
 
-let db_html: Document | null = null;
 
 // Set a __dirname const to make life a little easier.
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -31,7 +25,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
   app.listen(PORT);
 
 })();
-
 
 
 /**

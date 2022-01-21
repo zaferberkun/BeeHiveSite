@@ -1,0 +1,95 @@
+<head>
+  <link href="./css/main-menu.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="hamburger-menu-horz-flex">
+    <div class="main-menu-bar-fixed-container">
+      <div class="main-menu-flex-container">
+        <div class="menu-item">Home<div hidden>hub</div>
+        </div>
+        <div class="menu-item">The "HIVE"<div hidden>hive-story</div>
+        </div>
+        <div class="menu-item">Timeline<div hidden>timeline</div>
+        </div>
+        <div class="menu-item">Urban Drone Delivery<div hidden>conundrum</div>
+        </div>
+        <div class="menu-item">About BeeHive<div hidden>about</div>
+        </div>
+      </div>
+    </div>
+    <div class="hamburger-menu-fixed-container">
+      <div class="hamburger-menu-button">
+        <img class="hamburger-tab-image" style="width:100%;height:100%" src="./images/BeeHiveLogoSimple.svg">
+      </div>
+    </div>
+  </div>
+  <script>
+    //Activate the menu bar using the hidden elements to cross-reference the page IDs.
+
+    let about_page = document.getElementById("about");
+
+    let menu_items = document.querySelectorAll(".menu-item");
+
+    let pages = [];
+
+    function hideAllPages() {
+      for (let page of pages) {
+        page.style.display = "none";
+        page.classList.remove('display-transition');
+      }
+    }
+
+    function activate_page(page) {
+      hideAllPages();
+      page.style.display = "block";
+      page.classList.add('display-transition');
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 100);
+    }
+
+    function activate_navigation(menu_items, pages) {
+      for (let item of menu_items) {
+        let page_name = item.querySelector('[hidden]')?.innerText;
+        if (page_name) {
+          let page = document.getElementById(page_name);
+          if (page) {
+            if (pages)
+              pages.push(page);
+            item.click_page = page;
+            item.addEventListener("click", () => {
+              activate_page(item.click_page);
+              //Toggle Menu Open Class
+              main_menu.classList.toggle('menu-visible');
+              main_menu_img.classList.toggle('hamburger-img-rotate');
+            });
+          }
+        }
+      }
+    }
+
+    let explore_cards = document.querySelectorAll(".explore-card");
+
+    activate_navigation(menu_items, pages);
+    activate_navigation(explore_cards)
+
+
+    let hub_page = document.getElementById("hub");
+
+    //Activate the "hub" page when things have finished loading.
+    window.addEventListener('load', () => {
+      activate_page(hub_page);
+    });
+
+    let main_menu_button = document.querySelector('.hamburger-menu-button');
+    let main_menu = document.querySelector('.hamburger-menu-horz-flex');
+    let main_menu_img = main_menu_button.querySelector('img');
+
+    main_menu_button.addEventListener('click', () => {
+      //Toggle Menu Open Class
+      main_menu.classList.toggle('menu-visible');
+      main_menu_img.classList.toggle('hamburger-img-rotate');
+    })
+  </script>
+</body>

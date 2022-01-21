@@ -2,7 +2,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing : antialiased;
   font-size              : 16px;
-  font-family            : "ludo",
+  font-family            : "Lato",
     "Nunito",
     "Avenir Next",
     "Helvetica Neue",
@@ -18,6 +18,7 @@
   background-color      : var(--base_background);
   text-rendering        : optimizelegibility;
   -webkit-font-smoothing: subpixel-antialiased;
+  overflow              : auto;
 }
 
 body {
@@ -26,8 +27,46 @@ body {
 
 @media (max-width:700px) {
   :root {
-    font-size: 20px;
+    font-size: 14px;
   }
+}
+
+.sub-page {
+  display : none;
+  position: absolute;
+  top     : 0px;
+  left    : 0px;
+  height  : 100vh;
+  width: 100%;
+}
+
+.display-transition {
+  clip-path: none;
+  animation: 1s ease show-page;
+}
+
+@keyframes show-page {
+  0% {
+    clip-path        : circle(0%);
+    -webkit-clip-path: circle(0%);
+  }
+
+  99% {
+    clip-path        : circle(100%);
+    -webkit-clip-path: circle(100%);
+  }
+
+  100% {
+    clip-path        : none;
+    -webkit-clip-path: none;
+  }
+}
+
+.link {
+  text-decoration: underline;
+  cursor         : pointer;
+  color: firebrick;
+  font-style: italic;
 }
 
 .title-container {
@@ -40,17 +79,17 @@ body {
 }
 
 .title {
-  font-size          : 2rem;
-  font-weight        : bold;
+  font-size          : 2.7rem;
   text-align         : center;
   text-shadow        : 2px 2px #000000;
   padding-inline     : 5px;
   margin-block-end   : 0.2em;
   /* background-color: rgba(0, 0, 0, .3); */
+  font-weight        : 300;
 }
 
 .subtitle {
-  font-size          : 1.1rem;
+  font-size          : 1.3rem;
   margin-block-start : 0.0em;
   margin-block-end   : 0.83em;
   margin-inline-start: 0px;
@@ -59,22 +98,24 @@ body {
   text-align         : center;
   text-shadow        : 2px 2px #000000;
   /* background-color: rgba(0, 0, 0, .3); */
+  font-weight        : 300;
 }
+
 
 .interactive-card:hover {
   transform       : translateZ(20px);
-  background-color: rgba(236, 214, 9, 0.808);
+  background-color: rgb(217 183 157);
   box-shadow      : 10px 10px 10px 0 rgba(150, 150, 150, .5);
 }
 
 .mission {
-  font-size       : .6rem;
+  font-size       : .9rem;
   background-color: #422c0c;
   color           : beige;
   padding         : 5px;
   box-sizing      : border-box;
   text-shadow     : 1px 1px black;
-  font-weight     : 600;
+  font-weight     : 300;
   width           : 100vw;
   vertical-align  : middle;
   display         : flex;
@@ -107,7 +148,7 @@ body {
   display        : flex;
   flex-flow      : row;
   flex-wrap      : wrap;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .vert-flex-vert-center {
@@ -128,6 +169,7 @@ body {
   width           : 100%;
   background-color: #af917cb5;
   padding-top     : 10px;
+  cursor          : pointer;
 }
 
 .explore-image {
@@ -139,26 +181,28 @@ body {
 
 .explore-title {
   text-align        : center;
-  font-size         : .90rem;
+  font-size         : 1.4rem;
   margin-block-start: 10px;
   margin-block-end  : 10px;
   margin-left       : 10px;
   margin-right      : 10px;
   box-sizing        : border-box;
+  font-weight       : 300;
 }
 
 .explore-content {
   text-align   : center;
-  font-size    : .6rem;
+  font-size    : 1rem;
   margin-bottom: 30px;
   word-wrap    : break-word;
   margin-left  : 10px;
   margin-right : 10px;
   box-sizing   : border-box;
+  font-weight  : 300;
 }
 
 .explore-gap {
-  gap: 10px
+  gap: 10px;
 }
 
 .explore-margin {
@@ -195,6 +239,11 @@ body {
   box-shadow   : 4px 4px 6px #ffffff82;
 }
 
+.team-card:hover {
+  position: relative;
+  top     : -5px;
+}
+
 .team-image {
   height    : 200px;
   object-fit: cover;
@@ -204,7 +253,7 @@ body {
 
 .team-name {
   text-align        : center;
-  font-size         : .9rem;
+  font-size         : 1rem;
   margin-block-start: 10px;
   margin-block-end  : 10px;
   margin-left       : 0px;
@@ -216,13 +265,14 @@ body {
 
 .team-bio {
   text-align   : left;
-  font-size    : .6rem;
+  font-size    : .9rem;
   margin-bottom: 0px;
   padding-left : 10px;
   padding-right: 10px;
   width        : 100%;
   box-sizing   : border-box;
   justify-self : flex-end;
+  font-weight  : 300;
 }
 
 .team-bio-school {
@@ -232,9 +282,10 @@ body {
   padding-left  : 10px;
   padding-right : 10px;
   text-align    : left;
-  font-size     : .5rem;
+  font-size     : .9rem;
   width         : 100%;
   box-sizing    : border-box;
+  font-weight   : 300;
 }
 
 .heading1 {
@@ -244,15 +295,16 @@ body {
   border-left     : solid 3px #422c0c;
   padding-left    : 10px;
   background-image: linear-gradient(89deg, #8a7e6f, var(--base_background) 60%);
-  font-size       : 1.3rem;
+  font-size       : 1.5rem;
   margin-bottom   : 0.2rem;
   margin-top      : 0rem;
+  font-weight     : 300;
 }
 
 .info-card {
   padding-inline: 20%;
-  font-weight   : 600;
-  font-size     : 0.9rem;
+  font-weight   : 300;
+  font-size     : 1.1rem;
 }
 
 .info-margin {
@@ -270,12 +322,13 @@ body {
 }
 
 .footer {
-  font-size       : .5rem;
+  font-size       : 1.0rem;
   color           : white;
   background-color: #777878;
   width           : 100vw;
   margin-top      : 20px;
-  justify-content : space-around;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 @media (max-width: 600px) {
@@ -296,14 +349,17 @@ body {
 
   .info-card {
     padding-inline: 5%;
-    font-weight   : 600;
-    font-size     : 0.9rem;
+    font-weight   : 300;
+    font-size: 1.1rem;
   }
 
   .footer {
+justify-content: space-around;
+font-size: 0.8rem;
+}
 
-    justify-content: space-between;
-
+  .explore-gap {
+    gap: 20px;
   }
 }
 

@@ -43,6 +43,10 @@
   padding-block : 2rem;
 }
 
+.first-section {
+  padding-top: 100px;
+}
+
 .alternate-section-color {
   background-color: #393939;
   color           : white;

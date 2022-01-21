@@ -13,9 +13,6 @@
     <h1 class="title-text">BeeHive Technologies </h1>
     <h2 class="sub-title">Helping realize the future of urban drone delivery. </h2>
   </div>
-  <div class="header">
-    <div><img class="header-img" src="./images/beehive-logo.png"></div>
-  </div>
   <div class="separator"></div>
   <div class="intro-vert-flex">
     <div class="intro-container">
@@ -186,20 +183,6 @@
     </div>
   </div>
   <script>
-    async function getImg() {
-      let test = await fetch("https://storage.googleapis.com/beehive-storage/144%20W%2073rd%20NYC.png");
-      return test;
-    }
-
-
-    // getImg().then(async function parseblob(data) {
-    //   let image = [];
-    //   image[0] = await data.blob();
-    //   let testimage = document.getElementById("testimage");
-    //   let imgurl = URL.createObjectURL(image[0]);
-    //   testimage.src = imgurl;
-    // }).catch((e) => console.log("Problem loading picture ", e))
-
 
     function partialInViewport(element) {
       const rect = element.getBoundingClientRect();
