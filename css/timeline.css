@@ -26,20 +26,20 @@
 }
 
 .background {
-  position             : fixed;
-  width                : 100vw;
-  height               : 100vh;
-  margin               : 0px;
-  padding              : 0px;
-  left                 : 0px;
-  top                  : 0px;
-  background-image     : url("./images/187 Washington Chicago Steet.png");
-  background-position  : center;
-  background-repeat    : no-repeat;
-  background-size      : cover;
+  position               : fixed;
+  width                  : 100%;
+  height                 : 100%;
+  margin                 : 0px;
+  padding                : 0px;
+  left                   : 0px;
+  top                    : 0px;
+  background-image       : url("./images/187 Washington Chicago Steet.png");
+  background-position    : center;
+  background-repeat      : no-repeat;
+  background-size        : cover;
   -webkit-background-size: cover;
-  background-attachment: fixed;
-  filter               : blur(var(--background_filter));
+  background-attachment  : scroll;
+  filter                 : blur(var(--background_filter));
 }
 
 .three-d-root {
@@ -47,9 +47,9 @@
   perspective       : 1200px;
   transform-style   : preserve-3d;
   height            : 100vh;
-  width             : 101vw;
+  width             : 100%;
   transform-origin  : center;
-  perspective-origin: 857px 256px;
+  perspective-origin: center 100px;
 }
 
 .three-d-rotation-axis {
@@ -57,9 +57,11 @@
 }
 
 .three-d-container {
+  position        : absolute;
   transform-style : preserve-3d;
-  transform-origin: center 0px calc(0px - var(--frame_width) / 2);
+  transform-origin: center center calc(0px - var(--frame_width) / 2);
   width           : var(--frame_width);
+  left            : 10%;
   height          : 522px;
 }
 
@@ -237,7 +239,7 @@
   padding-bottom: 0vh;
   display       : flex;
   flex-direction: row;
-  width: 100%;
+  width         : 100%;
 }
 
 .positioner {
@@ -291,8 +293,8 @@
 .panel-main {
   display         : flex;
   flex-direction  : row;
-  align-items: center;
-  justify-content: space-evenly;
+  align-items     : center;
+  justify-content : space-evenly;
   gap             : 25px;
   border          : 2px solid gray;
   box-shadow      : 2px 2px 3px 0px gray;
@@ -317,9 +319,9 @@
   flex-basis : 200px;
   min-width  : 300px;
   max-width  : 582px;
-  flex-grow: 0.5;
+  flex-grow  : 0.5;
   flex-shrink: 1.0;
-  max-height: fit-content;
+  max-height : fit-content;
 }
 
 .panel-text-title {
@@ -334,12 +336,12 @@
 
 @media (max-width:900px) {
   .panel-text-title {
-    overflow: scroll;
+    overflow: hidden;
   }
 }
 
 .panel-text-content {
-  font-size: 1rem;
+  font-size  : 1rem;
   font-weight: 400;
 }
 
@@ -398,7 +400,15 @@
 
 @media (max-width:900px) {
   .beehive-info {
-    overflow: scroll;
+    overflow: hidden;
+  }
+
+  .background {
+
+    background-size: auto;
+
+    -webkit-background-size: cover;
+
   }
 }
 
@@ -410,7 +420,7 @@
   position       : fixed;
   top            : var(--frame_y_pos);
   transition     : top var(--transition_time) ease-in-out;
-  width          : 100vw;
+  width          : 100%;
   justify-items  : inherit;
 }
 

@@ -133,7 +133,7 @@ body {
 
 .vert-flex-main {
   width     : 100%;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 .inner-vert-flex {
@@ -228,7 +228,7 @@ body {
   box-sizing   : border-box;
   padding-left : 10%;
   padding-right: 10%;
-  width        : 100vw;
+  width: 100%;
 }
 
 .team-card {
@@ -323,7 +323,7 @@ body {
 
 .footer {
   height    : 50px;
-  width: auto;
+  width: 100%;
   background: rgb(207, 204, 204);
   z-index   : 100;
   color     : rgb(0, 0, 0);

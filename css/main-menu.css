@@ -11,8 +11,6 @@
   justify-content : center;
 }
 
-
-
 .main-menu-flex-container {
   display        : flex;
   flex-direction : row;
@@ -49,10 +47,6 @@
 } */
 
 .menu-item {
-  background     : #d8cdcd;
-  border-radius  : 2px;
-  box-shadow     : 2px 2px 2px grey;
-  transition     : border-radius 0.5s;
   box-sizing     : border-box;
   height         : max-content;
   padding        : 5px;
@@ -60,10 +54,16 @@
   cursor         : pointer;
 }
 
+.selected-menu-item {
+  border-bottom: solid black;
+  transition   : none;
+}
+
 @media (min-width:700px) and (hover:hover) {
   .menu-item:hover {
     border-radius: 5px;
     box-shadow   : 2px 2px 2px grey inset;
+    transition   : box-shadow 0.2s;
   }
 }
 
@@ -126,6 +126,7 @@
 }
 
 .menu-arrow {
+  display         : none;
   background-color: #fff2e1;
   clip-path       : polygon(50% 50%, 0 0, 0 100%);
   width           : 15px;
@@ -145,5 +146,9 @@
   .hamburger-menu-horz-flex .shrink-menu-arrow {
     clip-path : polygon(0% 50%, 0 0, 0 100%);
     transition: all var(--menu_transition_time);
+  }
+
+  .menu-arrow {
+    display: block;
   }
 }

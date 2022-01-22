@@ -46,6 +46,10 @@
         page.style.display = "none";
         page.classList.remove('display-transition');
       }
+
+      for (let button of menu_items) {
+        button.classList.remove('selected-menu-item');
+      }
     }
 
     function activate_page(page, name) {
@@ -66,26 +70,30 @@
       main_menu_arrow.classList.toggle('shrink-menu-arrow');
     }
 
-    function activate_navigation(menu_items, pages) {
-      for (let item of menu_items) {
-        let page_name = item.querySelector('[hidden]')?.innerText;
+    function init_menu_navigation(menu_items, pages) {
+      for (let selection of menu_items) {
+        let page_name = selection.querySelector('[hidden]')?.innerText;
         if (page_name) {
           let page = document.getElementById(page_name);
           if (page) {
-            if (pages)
-              pages.push(page);
-            item.click_page = page;
-            item.addEventListener("click", () => {
-              activate_page(item.click_page, page_name);
-              toggle_menu_visible();
+            // Store the pages so we can hide them.
+            if (pages) { pages.push(page); }
+            selection.click_page = page;
+            selection.addEventListener("click", () => {
+              activate_page(selection.click_page, page_name);
+              selection.classList.add('selected-menu-item');
+              // This is just a kludge to prevent the menu from displaying
+              // when the explore buttons are clicked.
+              if (pages)
+                toggle_menu_visible();
             });
           }
         }
       }
     }
 
-    activate_navigation(menu_items, pages);
-    activate_navigation(explore_cards)
+    init_menu_navigation(menu_items, pages);
+    init_menu_navigation(explore_cards)
 
     let hub_page = document.getElementById("hub");
 
@@ -103,7 +111,7 @@
       if (event.state) {
         let page = document.getElementById(event.state.page);
         if (page)
-          activate_page(page,)
+          activate_page(page)
       }
     });
 

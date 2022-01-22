@@ -1,8 +1,8 @@
 .three-d-container-urban {
   perspective       : 10px;
   perspective-origin: center bottom;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-y        : scroll;
+  overflow-x        : hidden;
   display           : flex;
   flex-direction    : column;
   align-items       : center;
@@ -11,15 +11,16 @@
 }
 
 .background-container-3d-urban {
-  filter             : blur(2px);
-  height: inherit;
-  width              : 100%;
-  background-image   : url("./images/skyline.png");
-  background-repeat  : no-repeat;
-  background-size    : cover;
-  background-position: center;
-  transform: translateZ(-23px) scale(7);
-  position           : absolute;
+  filter               : blur(2px);
+  height               : inherit;
+  width                : 100%;
+  background-image     : url("./images/skyline.png");
+  background-repeat    : no-repeat;
+  background-size      : cover;
+  background-position  : center;
+  background-attachment: scroll;
+  transform            : translateZ(-23px) scale(7);
+  position             : absolute;
 }
 
 
@@ -40,12 +41,12 @@
 }
 
 .subtitle-urban {
-  font-size  : 1.5rem;
-  text-align : center;
-  text-shadow: 2px 2px 1px black;
-  color      : white;
-  font-weight: 300;
-  backdrop-filter: contrast(0.5);
+  font-size              : 1.5rem;
+  text-align             : center;
+  text-shadow            : 2px 2px 1px black;
+  color                  : white;
+  font-weight            : 300;
+  backdrop-filter        : contrast(0.5);
   -webkit-backdrop-filter: contrast(0.5);
 }
 
@@ -62,12 +63,12 @@
 .section-urban {
   background-color: #f2f2f2db;
   margin-block    : 319px;
-  padding-block: 20px;
+  padding-block   : 20px;
 }
 
 @media (max-width:600px) {
   .section-urban {
-    margin-block: 100px;
+    margin-block : 100px;
     padding-block: 20px;
   }
 }
@@ -81,13 +82,13 @@
 }
 
 .body-text-urban {
-  font-size   : 1.2rem;
-  flex-basis  : 50%;
-  flex-grow   : 2;
+  font-size     : 1.2rem;
+  flex-basis    : 50%;
+  flex-grow     : 2;
   padding-inline: 40px;
-  padding-block: 10px;
-  text-align  : justify;
-  margin-block: 0;
+  padding-block : 10px;
+  text-align    : justify;
+  margin-block  : 0;
 }
 
 .alt-color-urban {
