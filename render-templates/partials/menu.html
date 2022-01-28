@@ -1,5 +1,9 @@
 <head>
   <link href="./css/main-menu.css" rel="stylesheet">
+  <!-- <link rel="preload" href="./css/main-menu.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="./css/main-menu.css">
+  </noscript> -->
 </head>
 
 <body>
@@ -12,6 +16,8 @@
         </div>
         <div class="menu-item">Timeline<div hidden>timeline</div>
         </div>
+        <div class="menu-item">Timeline 3D Beta<div hidden>timeline-beta</div>
+        </div>
         <div class="menu-item">Urban Drone Delivery<div hidden>conundrum</div>
         </div>
         <div class="menu-item">About BeeHive<div hidden>about</div>
@@ -20,7 +26,8 @@
     </div>
     <div class="hamburger-menu-fixed-container">
       <div class="hamburger-menu-button">
-        <img class="hamburger-tab-image" style="width:100%;height:100%" src="./images/BeeHiveLogoSimple.svg">
+        <img alt="BeeHive Logo" class="hamburger-tab-image"
+          style="width:100%;height:100%;filter: drop-shadow(2px 2px 2px black);" src="./images/BeeHiveLogoSimple.svg">
       </div>
     </div>
     <div class="menu-arrow"></div>
@@ -78,6 +85,7 @@
           if (page) {
             // Store the pages so we can hide them.
             if (pages) { pages.push(page); }
+            // Store the page to navigate too
             selection.click_page = page;
             selection.addEventListener("click", () => {
               activate_page(selection.click_page, page_name);

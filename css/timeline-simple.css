@@ -1,0 +1,255 @@
+.main-grid {
+  display              : grid;
+  grid-template-columns: 10% auto;
+  grid-template-rows   : auto;
+  justify-content      : center;
+}
+
+.calendar-title-container {
+  grid-column-start: 1;
+  grid-row-start   : 1;
+  display          : flex;
+  align-items      : center;
+  flex-direction   : column;
+  writing-mode     : vertical-lr;
+  text-orientation : upright;
+  position         : fixed;
+  font-size        : 4rem;
+  height           : 100%;
+  left             : 20px;
+}
+
+.flex-body-container {
+  grid-column-start: 2;
+  grid-row-start   : 1;
+  display          : flex;
+  flex-direction   : column;
+  justify-items    : center;
+  align-items      : flex-start;
+  perspective      : 1000px;
+  height           : auto;
+  /* border-left   : solid 3px black; */
+}
+
+.panel-container-main-simple {
+  display           : grid;
+  grid-template-rows: auto auto;
+  margin-bottom     : 305px;
+  perspective       : 1000px;
+}
+
+@media (min-width:700px) {
+  .first-container {
+    margin-top: 305px;
+  }
+}
+
+@media (max-width:700px) {
+  .first-container {
+    margin-top: 50px;
+  }
+}
+
+/* Style to use when off the screen. */
+.below-viewport {
+  visibility: hidden;
+  opacity   : 0.0;
+  transform : translate3d(0, 100px, 10px) rotateX(5deg);
+}
+
+.in-viewport {
+  visibility: visible;
+  opacity   : 1.0;
+}
+
+.panel-title {
+  grid-row-start    : 1;
+  grid-column-start : 2;
+  margin-block-start: 20px;
+  text-align        : left;
+  transform         : translateY(10px);
+}
+
+.panel-year {
+  display          : flex;
+  justify-content  : center;
+  flex-direction   : column;
+  grid-column-start: 1;
+  grid-row-start   : 2;
+  font-size        : 1.5rem;
+  font-weight      : 400;
+  grid-row-end     : 2;
+  width            : 0px;
+  height           : 100%;
+}
+
+.year {
+  margin-left: 20px;
+  margin-top : 10px;
+  color      : #eebdb16e;
+  position   : relative;
+  padding    : 5px;
+  top        : -40%;
+  left       : 61%;
+  font-size  : 4rem;
+  text-shadow: 1px 1px #00000045;
+  z-index    : 100;
+}
+
+.panel-main-simple {
+  --panel_trans_duration: 0.2s;
+  grid-row-start        : 2;
+  grid-row-end          : 2;
+  grid-column-start     : 2;
+  display               : flex;
+  flex-direction        : row;
+  align-items           : center;
+  gap                   : 25px;
+  justify-content       : space-between;
+  padding               : 30px;
+  border                : 2px solid gray;
+  box-shadow            : 2px 2px 3px 0px gray;
+  position              : relative;
+  border-radius         : 5px;
+  overflow              : hidden;
+  background-color      : whitesmoke;
+  transition            : transform var(--panel_trans_duration) ease-in var(--panel_trans_duration), opacity var(--panel_trans_duration) ease-in var(--panel_trans_duration), visibility var(--panel_trans_duration) var(--panel_trans_duration);
+}
+
+.panel-right-image-container {
+  width: auto;
+}
+
+.panel-left-image-container {
+  max-width: 300px;
+}
+
+.panel-image {
+  display        : block;
+  object-fit     : contain;
+  object-position: 50% 50%;
+  width          : 100%;
+  height         : 100%;
+}
+
+.panel-image-beehive {
+  max-width      : 400px;
+  width          : 100%;
+  display        : block;
+  object-fit     : contain;
+  object-position: 50% 50%;
+  height         : 48px;
+}
+
+.panel-image-waivers {
+  display        : block;
+  object-fit     : contain;
+  object-position: 50% 50%;
+  height         : 174px;
+}
+
+.panel-text-container {
+  flex-basis : 200px;
+  min-width  : 300px;
+  max-width  : 582px;
+  flex-grow  : 1.0;
+  flex-shrink: 1.0;
+  align-items: center;
+}
+
+.panel-beehive-info {
+  background-color: rgb(214, 201, 18);
+  font-weight     : 500;
+}
+
+.panel-text-title {
+  font-size  : 1.1rem;
+  font-weight: 600;
+}
+
+.panel-text-content {
+  font-size  : 1rem;
+  font-weight: 400;
+}
+
+.calendar-title {
+  color           : black;
+  height          : auto;
+  animation       : 0.5s ease-in-out title-slide;
+  background-color: #c39a3694;
+  padding-inline  : 10px;
+  border-radius   : 3px;
+  box-shadow      : 2px 2px 2px #000000b5;
+  height          : max-content;
+}
+
+.calendar-title-switch {
+  animation: 0.5s ease-in-out title-slide2;
+}
+
+@keyframes title-slide {
+  0% {
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes title-slide2 {
+  0% {
+    transform: translateX(-100px);
+  }
+}
+
+.background {
+  --background_filter    : 3px;
+  position               : fixed;
+  width                  : 100%;
+  height                 : 100%;
+  margin                 : 0px;
+  padding                : 0px;
+  left                   : 0px;
+  top                    : 0px;
+  background-image       : url("./images/187 Washington Chicago Steet.webp");
+  background-position    : center;
+  background-repeat      : no-repeat;
+  background-size        : cover;
+  -webkit-background-size: cover;
+  background-attachment  : scroll;
+  filter                 : blur(var(--background_filter));
+}
+
+.beehive-info {
+  background-color: #f1c041;
+  padding         : 10px;
+  border          : solid 1px;
+  font-size       : 1.2rem;
+  box-shadow      : 2px 2px 2px grey;
+  overflow        : visible;
+  text-align      : initial;
+  display         : flex;
+  flex-direction  : column;
+  justify-content : center;
+}
+
+@media (max-width:900px) {
+  .panel-main-simple {
+    flex-direction: column;
+    gap           : 30px;
+  }
+}
+
+@media (max-width:900px) {
+  .panel-main-simple {
+    flex-direction: column;
+    gap           : 30px;
+  }
+}
+
+@media (max-width:700px) {
+  .calendar-title-container {
+    display: none;
+  }
+
+  .main-grid {
+    grid-template-columns: auto auto;
+  }
+}

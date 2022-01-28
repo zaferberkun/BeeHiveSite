@@ -1,0 +1,166 @@
+------------------ Prepare 1/7 ------------------ 📄c:\Users\zafer\Documents\GitHub\BeeHive\BeeHiveSite\css\index.css 🔍checking duplicates... done (0.003s) ------------------ Results 1/7 ------------------ ⚙️[trimStart] [trimEnd] ✅38 duplicate values found in 476 lines: "Helvetica Neue",
+}
+
+:root {
+  text-align         : center;
+  text-shadow        : 2px 2px #000000;
+  /* background-color: rgba(0, 0, 0, .3); */
+  font-weight        : 300;
+  display            : flex;
+  flex-direction     : column;
+  align-items        : center;
+  box-sizing         : border-box;
+  justify-content    : center;
+  box-sizing         : border-box;
+  width              : 100%;
+  box-sizing         : border-box;
+  text-align         : center;
+  margin-block-start : 10px;
+  margin-block-end   : 10px;
+  box-sizing         : border-box;
+  font-weight        : 300;
+  width              : 100%;
+  width              : 100%;
+  font-weight        : 300;
+  font-weight        : 300;
+  background-color   : var(--base_background);
+  width              : 100%;
+  display            : flex;
+
+  .explore-image {
+    .team-margin {
+      .team-card {
+        .info-card {
+          font-size: 1.1rem;
+
+          .explore-gap {
+            0% {
+              100% {
+                .explore-card {
+                  height                                               : 200px;
+                  width                                                : calc((100% - (2 * 30px))/ 3);
+                  ------------------ Prepare 2/7 ------------------ 📄c: \Users\zafer\Documents\GitHub\BeeHive\BeeHiveSite\css\story.css 🔍checking duplicates... done (0.002s) ------------------ Results 2/7 ------------------ ⚙️[trimStart] [trimEnd] ✅17 duplicate values found in 298 lines:
+                }
+
+                margin-inline : 10px;
+                display       : flex;
+                flex-direction: column;
+                align-items   : center;
+                width         : 100%;
+
+                .intro-container {
+                  z-index    : 1;
+                  font-weight: 300;
+                  width      : 100%;
+
+                  @media (max-width:600px) {
+                    object-fit: cover;
+                    object-fit: contain;
+                    position  : relative;
+
+                    .caption {
+                      margin-block                                         : 0.5em;
+                      font-weight                                          : 300;
+                      ------------------ Prepare 3/7 ------------------ 📄c: \Users\zafer\Documents\GitHub\BeeHive\BeeHiveSite\css\main-menu.css 🔍checking duplicates... done (0.001s) ------------------ Results 3/7 ------------------ ⚙️[trimStart] [trimEnd] ✅12 duplicate values found in 158 lines:
+                    }
+
+                    .main-menu-bar-fixed-container {
+                      .main-menu-flex-container {
+                        flex-direction: column;
+                        display       : flex;
+                        flex-direction: row;
+
+                        .hamburger-menu-horz-flex {
+                          @media (min-width:701px) {
+                            .hamburger-menu-fixed-container {
+                              @media (max-width:701px) {
+                                transition: all var(--menu_transition_time);
+
+                                .menu-arrow {
+                                  ------------------ Prepare 4/7 ------------------ 📄c: \Users\zafer\Documents\GitHub\BeeHive\BeeHiveSite\css\conundrum.css 🔍checking duplicates... done (0.001s) ------------------ Results 4/7 ------------------ ⚙️[trimStart] [trimEnd] ✅7 duplicate values found in 119 lines:
+                                }
+
+                                .container-urban {
+                                  .section-urban {
+                                    flex-basis: 50%;
+
+                                    @media (max-width:600px) {
+                                      .img-urban {
+                                        .body-text-urban {
+                                          ------------------ Prepare 5/7 ------------------ 📄c: \Users\zafer\Documents\GitHub\BeeHive\BeeHiveSite\css\timeline-simple.css 🔍checking duplicates... done (0.002s) ------------------ Results 5/7 ------------------ ⚙️[trimStart] [trimEnd] ✅21 duplicate values found in 264 lines:
+                                        }
+
+                                        grid-row-start : 1;
+                                        display        : flex;
+                                        flex-direction : column;
+
+                                        .first-container {
+                                          grid-column-start: 1;
+                                          height           : 100%;
+                                          width            : 100%;
+                                          height           : min-content;
+                                          display          : block;
+                                          object-fit       : contain;
+                                          object-position  : 50% 50%;
+
+                                          0% {
+                                            transform: translateX(-100px);
+
+                                            .panel-main {
+                                              @media (max-width:900px) {
+                                                flex-direction: column;
+                                                gap           : 30px;
+
+                                                @media (max-width:700px) {
+                                                  .calendar-title-container {
+                                                    .main-grid {
+                                                      ------------------ Prepare 6/7 ------------------ 📄c: \Users\zafer\Documents\GitHub\BeeHive\BeeHiveSite\css\about.css 🔍checking duplicates... done (0.001s) ------------------ Results 6/7 ------------------ ⚙️[trimStart] [trimEnd] ✅7 duplicate values found in 85 lines:
+                                                    }
+
+                                                    width      : 100%;
+                                                    height     : auto;
+                                                    font-size  : 1.2rem;
+                                                    font-weight: 300;
+
+                                                    .container-about {
+                                                      .section-container {
+                                                        ------------------ Prepare 7/7 ------------------ 📄c:\Users\zafer\Documents\GitHub\BeeHive\BeeHiveSite\css\timeline.css 🔍checking duplicates... done (0.004s) ------------------ Results 7/7 ------------------ ⚙️[trimStart] [trimEnd] ✅35 duplicate values found in 499 lines::root {}
+
+                                                        .background {
+                                                          display        : flex;
+                                                          flex-direction : column;
+                                                          align-items    : center;
+                                                          width          : 100%;
+                                                          transform-style: preserve-3d;
+                                                          perspective    : 1000px;
+                                                          position       : absolute;
+
+                                                          0% {
+                                                            100% {
+                                                              position       : absolute;
+                                                              position       : relative;
+                                                              height         : var(--tether_length_key_height);
+                                                              transform-style: preserve-3d;
+
+                                                              @media (max-width:900px) {
+                                                                .panel-main {
+                                                                  .panel-text-title {
+                                                                    background: whitesmoke;
+                                                                    padding   : 5px;
+                                                                    height    : min-content;
+
+                                                                    .panel-image-waivers {
+                                                                      display        : block;
+                                                                      object-fit     : contain;
+                                                                      object-position: 50% 50%;
+
+                                                                      @media (min-width:900px) {
+                                                                        .panel-image {
+                                                                          .beehive-info {
+                                                                            overflow       : hidden;
+                                                                            transform-style: preserve-3d;
+                                                                            width          : var(--frame_width);
+                                                                            position       : absolute;
+                                                                            text-align     : center;
+
+                                                                            .sticky-year {

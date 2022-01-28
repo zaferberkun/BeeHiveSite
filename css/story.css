@@ -44,7 +44,6 @@ body {
   color           : #904e00;
   max-width       : 90%;
   font-weight     : 300;
-  transition      : border 2s;
 }
 
 .title-video {
@@ -291,9 +290,9 @@ body {
 }
 
 #board2 {
-  background-image: url("./images/187%20Washington%20Chicago%20Steet-small.jpg");
+  background-image: url("./images/187%20Washington%20Chicago%20Steet-small.webp");
 }
 
 #board3 {
-  background-image: url("./images/144%20W%2073rd%20NYC.png")
+  background-image: url("./images/144%20W%2073rd%20NYC.webp")
 }

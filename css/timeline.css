@@ -26,20 +26,27 @@
 }
 
 .background {
-  position               : fixed;
-  width                  : 100%;
-  height                 : 100%;
-  margin                 : 0px;
-  padding                : 0px;
-  left                   : 0px;
-  top                    : 0px;
-  background-image       : url("./images/187 Washington Chicago Steet.png");
-  background-position    : center;
-  background-repeat      : no-repeat;
-  background-size        : cover;
-  -webkit-background-size: cover;
-  background-attachment  : scroll;
-  filter                 : blur(var(--background_filter));
+  position                  : fixed;
+  width                     : 100%;
+  height                    : 100%;
+  margin                    : 0px;
+  padding                   : 0px;
+  left                      : 0px;
+  top                       : 0px;
+  background-image          : url("./images/187 Washington Chicago Steet.webp");
+  background-position       : center;
+  background-repeat         : no-repeat;
+  background-size           : cover;
+  -webkit-background-size   : cover;
+  background-attachment     : scroll;
+  /* filter                 : blur(var(--background_filter)); */
+}
+
+@media (min-width:900px) {
+
+  .background {
+    filter: blur(var(--background_filter));
+  }
 }
 
 .three-d-root {
@@ -99,6 +106,7 @@
   width         : 100%;
   animation     : 1s ease-in-out 0s infinite alternate both running drone-hover;
   top           : 0px;
+  will-change   : transform;
 }
 
 /* The hovering animation */
@@ -124,6 +132,7 @@
   z-index       : 100;
   transform     : translateX(var(--x_trans));
   transition    : margin 2s cubic-bezier(0.68, -0.1, 0.32, 1.3), transform 1.5s ease-out;
+  will-change   : margin;
 }
 
 .drone {
@@ -131,7 +140,7 @@
   height             : var(--drone_height);
   /* background-color: blueviolet; */
   margin-top         : 8px;
-  background-image   : url("./images/drone.png");
+  background-image   : url("./images/drone.webp");
   background-origin  : 50% 50%;
   background-position: 50% 50%;
   background-repeat  : no-repeat;
@@ -142,6 +151,7 @@
   transform          : rotateZ(var(--z_rot)) scale(var(--drone_scaling));
   transition         : transform 0.5s cubic-bezier(0.68, -0.1, 0.32, 1.3);
   z-index            : 100;
+  will-change        : transform;
 }
 
 .prop-container1 {
@@ -220,17 +230,19 @@
   height     : var(--tether_length);
   transition : height var(--transition_time) ease-in-out,
     top 2s cubic-bezier(0.68, -0.1, 0.32, 1.3);
-  margin-top: -5px;
+  margin-top : -5px;
+  will-change: height;
 }
 
 .tether::after {
-  content   : "C";
-  top       : calc(var(--tether_length) - 8px);
-  position  : absolute;
-  transition: top var(--transition_time) ease-in-out;
-  transform : rotate(91deg);
-  left      : -9px;
-  font-size : 20px;
+  content    : "C";
+  top        : calc(var(--tether_length) - 8px);
+  position   : absolute;
+  transition : top var(--transition_time) ease-in-out;
+  transform  : rotate(91deg);
+  left       : -9px;
+  font-size  : 20px;
+  will-change: top;
 }
 
 .main-vert-scroller {
@@ -271,7 +283,7 @@
   overflow           : hidden;
   position           : absolute;
   transform-style    : preserve-3d;
-  backface-visibility: hidden;
+  backface-visibility: visible;
 }
 
 /* All the panel styles  */
@@ -316,12 +328,11 @@
 }
 
 .panel-text-container {
-  flex-basis : 200px;
-  min-width  : 300px;
-  max-width  : 582px;
-  flex-grow  : 0.5;
-  flex-shrink: 1.0;
-  max-height : fit-content;
+  /* flex-basis : 200px; */
+  min-width     : 300px;
+  /* flex-grow  : 0.5; */
+  /* flex-shrink: 1.0; */
+  height        : auto;
 }
 
 .panel-text-title {
@@ -332,6 +343,7 @@
   padding    : 5px;
   overflow   : visible;
   box-sizing : border-box;
+  background : whitesmoke;
 }
 
 @media (max-width:900px) {
@@ -343,6 +355,8 @@
 .panel-text-content {
   font-size  : 1rem;
   font-weight: 400;
+  background : whitesmoke;
+  padding    : 5px;
 }
 
 .panel-right-image-container {
@@ -390,9 +404,9 @@
 
 .beehive-info {
   background-color: #f1c041;
-  padding         : 20px;
+  padding         : 10px;
   border          : solid 1px;
-  font-size       : 1.0rem;
+  font-size       : 1.2rem;
   box-shadow      : 2px 2px 2px grey;
   overflow        : visible;
   text-align      : center;

@@ -40,16 +40,16 @@
 
     .calendar-title-container {
       grid-column-start: 1;
-    grid-row-start: 1;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    writing-mode: vertical-lr;
-    text-orientation: upright;
-    position: fixed;
-    font-size: 4rem;
-    height: 100%;
-    left: 20px;
+      grid-row-start: 1;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      writing-mode: vertical-lr;
+      text-orientation: upright;
+      position: fixed;
+      font-size: 4rem;
+      height: 100%;
+      left: 20px;
     }
 
     .flex-body-container {
@@ -118,26 +118,27 @@
 
     .year {
       margin-left: 10px;
-    background-color: #bdbdbd;
-    color: #000000;
-    position: relative;
-    left: -42px;
-    padding: 5px;
-    transition: transform 1s;
-    box-shadow: 2px 3px 5px 1px #ffeb3b;
-    border-radius: 5px;
-    border: solid;
-    border-color: #0017b7;
-    position: sticky;
-    top:10px;
+      background-color: #bdbdbd;
+      color: #000000;
+      position: relative;
+      left: -42px;
+      padding: 5px;
+      transition: transform 1s;
+      box-shadow: 2px 3px 5px 1px #ffeb3b;
+      border-radius: 5px;
+      border: solid;
+      border-color: #0017b7;
+      position: sticky;
+      top: 10px;
     }
 
     .year-start-y {
-      transform: translate3d(-20px, 200px, 10px);    }
+      transform: translate3d(-20px, 200px, 10px);
+    }
 
     .year-end-y {
-      transform: translate3d(-20px, 10px, 10px);    }
-
+      transform: translate3d(-20px, 10px, 10px);
+    }
 
     /* .year::before {
       content: '➤';
@@ -223,7 +224,6 @@
       animation: title-slide2 1s ease-in-out;
     }
 
-
     @keyframes title-slide {
       0% {
         transform: translateX(-100px);
@@ -235,23 +235,20 @@
         transform: translateX(-100px);
       }
     }
-
   </style>
 </head>
 
 <body>
   <div class="main-grid">
     <div class="calendar-title-container">
-      <div id="calendar-title" class="calendar-title">No Commercial Flights
-      </div>
+      <div id="calendar-title" class="calendar-title">No Commercial Flights </div>
     </div>
     <div class="flex-body-container">
       <!-- First slide -->
       <div class="panel-container-main">
         <div class="panel-year ">
-          <div class="year year-start-y">2016<h2 hidden>No Commercial Flights</h2></div>
-          
-
+          <div class="year year-start-y">2016<h2 hidden>No Commercial Flights</h2>
+          </div>
         </div>
         <div class="panel-main below-viewport">
           <div class="panel-left-image-container">
@@ -272,9 +269,8 @@
       <div class="panel-container-main">
         <h2 class="panel-title">Part 107</h2>
         <div class="panel-year">
-          <div class="year year-start-y">2016<h2 hidden>Part 107</h2></div>
-          
-
+          <div class="year year-start-y">2016<h2 hidden>Part 107</h2>
+          </div>
         </div>
         <div class="panel-main below-viewport">
           <div class="panel-left-image-container">
@@ -299,12 +295,11 @@
       <div class="panel-container-main">
         <h2 class="panel-title">2017 - LAANC, IPP, UTM</h2>
         <div class="panel-year ">
-          <div class="year year-start-y">2016 <h2 hidden>LAANC, IPP, UTM</h2></div>
-         
-
-        </div>        
-        <div class="panel-main below-viewport"> 
-         <div class="panel-left-image-container">
+          <div class="year year-start-y">2016 <h2 hidden>LAANC, IPP, UTM</h2>
+          </div>
+        </div>
+        <div class="panel-main below-viewport">
+          <div class="panel-left-image-container">
             <img title="" src="./drone-compensation.png" class="panel-image" alt="">
           </div>
           <div class="panel-text-container">
@@ -450,10 +445,10 @@
       for (let year of years) {
         setBelowViewport(year, .5);
         //Figure out what the title font size should be for this panel.
-        year.titlefontSize = Math.max(1,Math.trunc(40/year.querySelector("h2").innerText.length))+"rem";
+        year.titlefontSize = Math.max(1, Math.trunc(40 / year.querySelector("h2").innerText.length)) + "rem";
         if (!year.isBelowViewportLowerEdge) {
           year.classList.replace("year-start-y", "year-end-y")
-          year.titlefontSize = Math.max(1,Math.trunc(40/year.querySelector("h2").innerText.length))+"rem";
+          year.titlefontSize = Math.max(1, Math.trunc(40 / year.querySelector("h2").innerText.length)) + "rem";
         }
       }
     })(panels);
@@ -485,17 +480,16 @@
 
     function doScrollTransitionMainPanel() {
       for (let panel of panels) {
-         checkPositionForTransition(panel, .50, "below-viewport", "in-viewport");
+        checkPositionForTransition(panel, .50, "below-viewport", "in-viewport");
       }
     }
 
     function doScrollTransitionYears() {
       let latest_year;
-      for (let year of years){
-         if (checkPositionForTransition(year, .1, "year-start-y", "year-end-y"))
-         {
-           latest_year = year;
-         }
+      for (let year of years) {
+        if (checkPositionForTransition(year, .1, "year-start-y", "year-end-y")) {
+          latest_year = year;
+        }
       }
       return latest_year;
     }
@@ -503,20 +497,19 @@
     title = document.getElementById("calendar-title");
 
     let prev_year;
-    document.addEventListener("scroll", ()=>
- {
-       doScrollTransitionMainPanel();
-       let year = doScrollTransitionYears();
-       
-       if (year !==prev_year){
-         let currentTitle=year.querySelector("h2");
-         title.innerText = currentTitle.innerText;
-         title.style.fontSize = year.titlefontSize;
-         title.classList.toggle("calendar-title-switch");
-         prev_year=year;
-       }
+    document.addEventListener("scroll", () => {
+      doScrollTransitionMainPanel();
+      let year = doScrollTransitionYears();
+
+      if (year !== prev_year) {
+        let currentTitle = year.querySelector("h2");
+        title.innerText = currentTitle.innerText;
+        title.style.fontSize = year.titlefontSize;
+        title.classList.toggle("calendar-title-switch");
+        prev_year = year;
+      }
 
     });
-  
+
   </script>
 </body>

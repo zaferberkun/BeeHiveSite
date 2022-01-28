@@ -42,7 +42,8 @@ body {
 
 .display-transition {
   /* clip-path: none; */
-  animation: 1s ease show-page;
+  animation  : 1s ease show-page;
+  will-change: clip-path;
 }
 
 @keyframes show-page {
@@ -116,9 +117,10 @@ body {
   box-sizing      : border-box;
   text-shadow     : 1px 1px black;
   font-weight     : 300;
-  width           : 100vw;
+  width           : 100%;
   vertical-align  : middle;
   display         : flex;
+  padding-inline  : 10px;
   justify-content : center;
 }
 
@@ -158,6 +160,11 @@ body {
 
 .base-card {
   overflow: hidden;
+}
+
+.base-card.selected-menu-item {
+  border-bottom: none;
+  transition   : all .15s ease-in-out;
 }
 
 .explore-card {
@@ -206,8 +213,8 @@ body {
 }
 
 .explore-margin {
-  margin-left  : 10%;
-  margin-right : 10%;
+  margin-left  : 4%;
+  margin-right : 4%;
   margin-top   : 40px;
   margin-bottom: 20px;
 }
@@ -228,7 +235,7 @@ body {
   box-sizing   : border-box;
   padding-left : 10%;
   padding-right: 10%;
-  width: 100%;
+  width        : 100%;
 }
 
 .team-card {
@@ -240,8 +247,9 @@ body {
 }
 
 .team-card:hover {
-  position: relative;
-  top     : -5px;
+  position  : relative;
+  top       : -5px;
+  transition: all 0.5s;
 }
 
 .team-image {
@@ -323,7 +331,7 @@ body {
 
 .footer {
   height    : 50px;
-  width: 100%;
+  width     : 100%;
   background: rgb(207, 204, 204);
   z-index   : 100;
   color     : rgb(0, 0, 0);
@@ -386,6 +394,10 @@ body {
   animation       : 0.8s linear infinite alternate spinner;
 }
 
+#main-menu {
+  display: none;
+}
+
 @keyframes spinner {
   0% {
     transform: translateX(calc(50vw - 50px)) translateY(calc(50vh - 70px)) scale(1);
@@ -415,6 +427,7 @@ body {
     box-sizing   : border-box;
     padding-left : 5%;
     padding-right: 5%;
+    padding-block: 20px;
   }
 }
 
@@ -431,6 +444,7 @@ body {
     box-sizing   : border-box;
     padding-left : 15%;
     padding-right: 15%;
+    padding-block: 30px;
   }
 }
 

@@ -11,10 +11,10 @@
 }
 
 .background-container-3d-urban {
-  filter               : blur(2px);
+  /* filter               : blur(2px); */
   height               : inherit;
   width                : 100%;
-  background-image     : url("./images/skyline.png");
+  background-image     : url("./images/skyline-blurred.webp");
   background-repeat    : no-repeat;
   background-size      : cover;
   background-position  : center;
@@ -41,20 +41,20 @@
 }
 
 .subtitle-urban {
-  font-size              : 1.5rem;
-  text-align             : center;
-  text-shadow            : 2px 2px 1px black;
-  color                  : white;
-  font-weight            : 300;
-  backdrop-filter        : contrast(0.5);
-  -webkit-backdrop-filter: contrast(0.5);
+  font-size                 : 1.5rem;
+  text-align                : center;
+  text-shadow               : 2px 2px 1px black;
+  color                     : white;
+  font-weight               : 300;
+  /* backdrop-filter        : contrast(0.5); */
+  /* -webkit-backdrop-filter: contrast(0.5); */
 }
 
 .container-urban {
   width: 60%;
 }
 
-@media (max-width:600px) {
+@media (max-width: 900px) {
   .container-urban {
     width: 90%;
   }
@@ -114,6 +114,7 @@
   }
 
   .body-text-urban {
-    font-size: 1.4rem;
+    font-size   : 1.4rem;
+    text-align: left;
   }
 }

@@ -18,6 +18,7 @@
   border-bottom: groove;
   position     : absolute;
   animation    : 1s ease border-slide;
+  will-change  : width;
 }
 
 @keyframes border-slide {
@@ -73,7 +74,7 @@
   font-weight: 300;
 }
 
-@media (max-width:600px) {
+@media (max-width: 900px) {
   .container-about {
     width: 90%;
   }
