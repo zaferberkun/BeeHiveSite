@@ -148,7 +148,7 @@ body {
 }
 
 .slide-container-last {
-  height: calc(var(--caption_separation) * var(--slide_count) + var(--caption_separation) + 200px);
+  height: calc(var(--caption_separation) * var(--slide_count) + var(--caption_separation) * 0.5 - 50px)
 }
 
 .image-container {

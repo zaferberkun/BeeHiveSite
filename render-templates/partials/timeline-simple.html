@@ -34,7 +34,7 @@
       <!-- Second slide -->
       <div class="panel-container-main-simple">
         <div class="panel-year">
-          <div class="year year-start-y">2016<h2 hidden>Part 107</h2>
+          <div class="year year-start-y">2016<h2 hidden>PART 107</h2>
           </div>
         </div>
         <div class="panel-main-simple below-viewport">
@@ -83,7 +83,7 @@
       <div class="panel-container-main-simple">
         <div class="panel-year ">
           <div class="year year-start-y">
-            <h2 hidden>Part 135</h2>
+            <h2 hidden>PART 135</h2>
           </div>
         </div>
         <div class="panel-main-simple below-viewport">
@@ -109,7 +109,7 @@
       </div>
       <div class="panel-container-main-simple ">
         <div class="panel-year ">
-          <div class="year year-start-y">2019<h2 hidden>BeeHive FOUNDED</h2>
+          <div class="year year-start-y">2019<h2 hidden>BEEHIVE FOUNDED</h2>
           </div>
         </div>
         <div class="panel-main-simple below-viewport">
@@ -157,7 +157,7 @@
       <div class="panel-container-main-simple">
         <div class="panel-year ">
           <div class="year year-start-y">
-            <h2 hidden>NASA and FAA Tech</h2>
+            <h2 hidden>NASA and FAA TECH</h2>
           </div>
         </div>
         <div class="panel-main-simple below-viewport">
@@ -165,8 +165,8 @@
             <img title="" src="./images/NASA_UTM.webp" class="panel-image" alt="NASA UTM">
           </div>
           <div class="panel-text-container">
-            <h3 class="panel-text-title">NASA & FAA TECHNOLOGY<p class="panel-text-content">NASA granted patent for UTM
-                design and wins Government Invention of the Year. </p>
+            <h3 class="panel-text-title">NASA and FAA TECHNOLOGY<p class="panel-text-content">NASA granted patent for
+                UTM design and wins Government Invention of the Year. </p>
               <p class="panel-text-content">FAA Publishes Concept of Operations V2 for Unmanned Aircraft System Traffic
                 Management.</p>
               <p class="panel-text-content">FAA replaces IPP program wtih BEYOND program to address remaining challenges
@@ -180,7 +180,7 @@
       </div>
       <div class="panel-container-main-simple ">
         <div class="panel-year ">
-          <div class="year year-start-y">2020<h2 hidden>BeeHive</h2>
+          <div class="year year-start-y">2020<h2 hidden>BEEHIVE</h2>
           </div>
         </div>
         <div class="panel-main-simple below-viewport">
@@ -332,7 +332,13 @@
         </div>
       </div>
     </div>
-  </div> <!-- body -->
+  </div>
+  <div class="footer">
+    <div class="footer-flex">
+      <div class="copyright">Copyright 2022 BeeHive Technologies</div>
+      <div class="email">Contact: jack@beehivetech.co</div>
+    </div>
+  </div>
   <script>
 
     let date_line = document.getElementById("date-line");
@@ -423,7 +429,7 @@
         if (entirelyInViewportTimeline(frame) || init) {
           if (prev_frame != frame) {
             let currentTitle = panel.querySelector('.year h2');
-            title.style.fontSize = Math.min(3, Math.max(2, Math.trunc(50 / currentTitle.innerText.length))) + "rem";
+            title.style.fontSize = Math.max(24, Math.min(30, Math.trunc(window.innerHeight / (currentTitle.innerText.length * 2)))) + "px";
             title.innerText = currentTitle.innerText;
             title.classList.toggle("calendar-title-switch");
             prev_frame = frame;
